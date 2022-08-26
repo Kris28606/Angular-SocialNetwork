@@ -14,13 +14,13 @@
     <form>
         <div class="form-group">
             <label for="userUsername" style="padding: 10px;">Username</label>
-            <input type="text" class="form-control" id="userUsername" placeholder="user123">
+            <input type="text" class="form-control" id="userUsername" placeholder="user123" name="username" [(ngModel)]="user.Username">
           </div>
         <div class="form-group">
             <label for="userPassword" style="padding: 10px;">Password</label>
-            <input type="password" class="form-control" id="userPassword" placeholder="!User321">
+            <input type="password" class="form-control" id="userPassword" placeholder="!User321" name="password" [(ngModel)]="user.Password">
         </div>
-        <button class="btn">Log in</button>
+        <button class="btn" (click)="LogIn()">Log in</button>
     </form>
 
 
