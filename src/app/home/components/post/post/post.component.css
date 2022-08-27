@@ -1,0 +1,34 @@
+.post {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    border: 1px black solid;
+    padding: 10px;
+}
+
+#objava, #naslov, #sadrzaj, #opis {
+    border: 1px black solid;
+}
+
+#sadrzaj {
+    margin-left: 21px;
+}
+
+#opis {
+    padding: 8px;
+}
+
+p,h1 {
+    margin-bottom: 0px;
+}
+
+#naslov {
+    padding: 5px;
+}
+
+#slika {
+    margin-top: 10px;
+}
+
+#slika img {
+    border-radius: 100px;
+}
