@@ -1,0 +1,30 @@
+.profile{
+    margin-top: 5px;
+    margin-left: 5px;
+    padding: 5px;
+    border: 2px black solid;
+    width: 250px;
+}
+
+#picture {
+    border: 2px black solid;
+    padding-left: 35px;
+}
+
+#podaci {
+    margin-top: 15px;
+    text-align: center;
+}
+
+h1 {
+    font-size: x-large;
+}
+
+p {
+    font-size: medium;
+}
+
+img {
+    border-radius: 100px;
+    margin: auto;
+}
