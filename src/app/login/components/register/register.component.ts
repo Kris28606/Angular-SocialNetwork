@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from 'src/app/model/user/user';
+import { UserDto } from 'src/app/model/user/userDto';
 import Swal from 'sweetalert2';
 import { LoginService } from '../../service/auth.service';
 
@@ -11,7 +11,7 @@ import { LoginService } from '../../service/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
-  user: User=new User();
+  user: UserDto=new UserDto();
   constructor(private registerService: LoginService, private router: Router) { }
 
   ngOnInit(): void {
@@ -20,8 +20,8 @@ export class RegisterComponent implements OnInit {
   Register() {
 
     console.log(this.user);
-    if(this.user.Email=="" || this.user.FirstName=="" || this.user.LastName=="" || this.user.Password==""
-      || this.user.Username=="") {
+    if(this.user.email=="" || this.user.firstName=="" || this.user.lastName=="" || this.user.password==""
+      || this.user.username=="") {
         console.log("Unesite sve podatke!");
         Swal.fire('Please, fill all the fields!');
       } else{

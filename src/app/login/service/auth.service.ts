@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from 'src/app/model/user/user';
+import { UserDto } from 'src/app/model/user/userDto';
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +14,11 @@ export class LoginService {
     this.baseUrl="https://localhost:7042";
   }
 
-  LogIn(user: User):Observable<User> {
-    return this.httpClient.post<User>(this.baseUrl+"/login", user);
+  LogIn(user: UserDto):Observable<UserDto> {
+    return this.httpClient.post<UserDto>(this.baseUrl+"/login", user);
   }
 
-  Register(user: User):Observable<Object> {
+  Register(user: UserDto):Observable<Object> {
     return this.httpClient.post<Object>(this.baseUrl+"/register", user);
   }
 }

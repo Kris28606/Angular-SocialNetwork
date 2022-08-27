@@ -1,0 +1,28 @@
+.header {
+    padding: 10px;
+    background-color: blue;
+}
+
+h1 {
+    margin-left: 10px;
+}
+
+#pretragaLevo {
+    margin-left: 200px;
+}
+
+#pretragaDesno{
+    margin-left: 150px;
+}
+
+#pretragaDesno button {
+    margin-left: 50px;
+    font-size: large;
+    color: white;
+}
+
+.sadrzaj{
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}

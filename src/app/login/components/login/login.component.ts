@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from 'src/app/model/user/user';
+import { UserDto } from 'src/app/model/user/userDto';
 import { TokenService } from 'src/app/token/token.service';
 import Swal from 'sweetalert2';
 import { LoginService } from '../../service/auth.service';
@@ -12,7 +12,7 @@ import { LoginService } from '../../service/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  user: User=new User();
+  user: UserDto=new UserDto();
 
   constructor(private loginService: LoginService, private tokenService: TokenService, private router: Router) { }
 
@@ -22,12 +22,12 @@ export class LoginComponent implements OnInit {
   LogIn() {
     this.loginService.LogIn(this.user).subscribe( data=> {
       this.user=data;
-      console.log(this.user);
-      if(this.user.Token!=null) {
-        this.tokenService.postaviToken(this.user.Token);
+      if(this.user.token!=null) {
+        this.tokenService.postaviToken(this.user.token);
       }
-      Swal.fire("Welcome, "+this.user.FirstName+" "+this.user.LastName+"!");
-      this.router.navigate(['home']);
+      console.log(this.tokenService.vratiToken());
+      Swal.fire("Welcome, "+this.user.firstName+" "+this.user.lastName+"!");
+      this.router.navigate(['home', this.user.id]);
     }, error => {
       Swal.fire("Error, wrong username/password!");
       console.log(error);
