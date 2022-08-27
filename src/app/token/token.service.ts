@@ -1,4 +1,6 @@
+import { HttpClientJsonpModule, JsonpInterceptor } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { UserDto } from '../model/user/userDto';
 
 @Injectable({
   providedIn: 'root'
@@ -16,4 +18,5 @@ export class TokenService {
   vratiToken(): string {
     return this.token;
   }
+
 }
