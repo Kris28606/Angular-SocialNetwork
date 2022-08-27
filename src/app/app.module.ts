@@ -9,12 +9,22 @@ import { RegisterComponent } from './login/components/register/register.componen
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './home/components/home/home.component';
+import { ProfilePictureComponent } from './home/components/profile-picture/profile-picture.component';
+import { PostComponent } from './home/components/post/post/post.component';
+import { HeaderComponent } from './header/header.component';
+import { ProfileComponent } from './profile/components/profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeComponent,
+    ProfilePictureComponent,
+    PostComponent,
+    HeaderComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
