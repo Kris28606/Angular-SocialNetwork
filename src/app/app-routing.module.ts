@@ -19,7 +19,7 @@ const routes: Routes = [
     path: 'home/:id', component: HomeComponent
   },
   {
-    path: 'profile', component: ProfileComponent
+    path: 'profile/:id', component: ProfileComponent
   }
 
 ];
