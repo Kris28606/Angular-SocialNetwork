@@ -4,4 +4,5 @@ export class Post {
     datum!: Date;
     username: String="";
     name: String=""; 
+    ago: String="";
 }
