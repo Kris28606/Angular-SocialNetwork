@@ -1,0 +1,32 @@
+.newPost {
+    margin-top: 10px;
+    width: 1fr;
+    border: 0px black solid;
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+
+#slika {
+    border: 2px black solid;
+    padding-top: 8px;
+    padding-left: 18px;
+}
+
+#slika img {
+    border-radius: 100px;
+}
+
+#sadrzaj{
+    padding: 5px;
+    border: 2px black solid;
+}
+
+#btnPicture, #btnPost {
+    margin: 5px;
+    background-color: blue;
+    color: white;
+}
+
+#btnPost{
+    margin-left: 200px;
+}

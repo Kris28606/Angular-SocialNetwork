@@ -14,6 +14,7 @@ import { ProfilePictureComponent } from './home/components/profile-picture/profi
 import { PostComponent } from './home/components/post/post/post.component';
 import { HeaderComponent } from './header/header.component';
 import { ProfileComponent } from './profile/components/profile/profile.component';
+import { NewPostComponent } from './home/components/newPost/new-post/new-post.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ProfileComponent } from './profile/components/profile/profile.component
     ProfilePictureComponent,
     PostComponent,
     HeaderComponent,
-    ProfileComponent
+    ProfileComponent,
+    NewPostComponent
   ],
   imports: [
     BrowserModule,
