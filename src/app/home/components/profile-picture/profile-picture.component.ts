@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserDto } from 'src/app/model/user/userDto';
 
 @Component({
@@ -9,11 +10,14 @@ import { UserDto } from 'src/app/model/user/userDto';
 export class ProfilePictureComponent implements OnInit {
 
   @Input() user: UserDto=new UserDto();
-  constructor() {
+  constructor(private router: Router) {
     console.log("User:" +this.user.firstName);
    }
 
   ngOnInit(): void {
   }
 
+  openProfile() {
+    this.router.navigate(['profile', this.user.id]);
+  }
 }
