@@ -3,8 +3,8 @@
         <img src="/assets/images/People/bill-gates.jpg" style="width: 50px; height: 50px;">
     </div>
     <div id="sadrzaj">
-        <textarea class="form-control" id="text" rows="2" placeholder="What's on your mind?"></textarea>
-        <button class="btn" id="btnPicture">Picture</button>
-        <button class="btn" id="btnPost">Post</button>
+        <textarea class="form-control" id="text" rows="2" placeholder="What's on your mind?" [(ngModel)]="post.description"></textarea>
+        <input class="form-control" type="file"  accept="image/png, image/jpeg" id="formFile" (change)="select($event)">
+        <button class="btn" id="btnPost" (click)="savePost()">Post</button>
     </div>
 </div>

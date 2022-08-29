@@ -21,12 +21,14 @@
     border: 2px black solid;
 }
 
-#btnPicture, #btnPost {
-    margin: 5px;
-    background-color: blue;
-    color: white;
+#formFile {
+    margin-right: 5px;
+    margin-top: 5px;
 }
 
-#btnPost{
-    margin-left: 200px;
+#btnPost {
+    background-color: blue;
+    color: white;
+    margin-top: 5px;
+    margin-left: 170px;
 }
