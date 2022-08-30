@@ -12,9 +12,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/components/home/home.component';
 import { ProfilePictureComponent } from './home/components/profile-picture/profile-picture.component';
 import { PostComponent } from './home/components/post/post/post.component';
-import { HeaderComponent } from './header/header.component';
 import { ProfileComponent } from './profile/components/profile/profile.component';
 import { NewPostComponent } from './home/components/newPost/new-post/new-post.component';
+import { SearchComponent } from './search/search/search.component';
 
 @NgModule({
   declarations: [
@@ -24,9 +24,9 @@ import { NewPostComponent } from './home/components/newPost/new-post/new-post.co
     HomeComponent,
     ProfilePictureComponent,
     PostComponent,
-    HeaderComponent,
     ProfileComponent,
-    NewPostComponent
+    NewPostComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
