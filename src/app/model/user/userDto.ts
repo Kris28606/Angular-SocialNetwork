@@ -6,4 +6,5 @@ export class UserDto {
     lastName: string="";
     email: string="";
     token: string="";
+    profilePicture: string="";
 }
