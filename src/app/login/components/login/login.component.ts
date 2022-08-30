@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
       this.user=data;
       if(this.user.token!=null) {
         this.tokenService.postaviToken(this.user.token);
+        this.tokenService.postaviUsera(this.user.id);
       }
       console.log(this.tokenService.vratiToken());
       Swal.fire("Welcome, "+this.user.firstName+" "+this.user.lastName+"!");
