@@ -22,8 +22,4 @@ export class PostService {
     return this.httpClient.post(`${this.baseUrl}/new`, post,
     {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken()), responseType: 'arraybuffer'});
   }
-  uploadPicture(file: FormData):Observable<Object> {
-    return this.httpClient.post(`${this.baseUrl}/upload`, file,
-    {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken()), responseType: 'text'});
-  }
 }
