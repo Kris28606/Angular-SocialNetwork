@@ -29,4 +29,10 @@ export class UserService {
     return this.httpClient.post<UserDto[]>(this.baseUrl+"/search", JSON.stringify(kriterijum),
     {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
   }
+
+  changeProfilePicture(user: UserDto):Observable<Object> {
+    return this.httpClient.post<Object>(`${this.baseUrl}/changePicture`, user,
+    {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
+  }
+
 }
