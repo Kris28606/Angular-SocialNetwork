@@ -13,18 +13,36 @@ export class TokenService {
   constructor() { }
 
   postaviToken(tok: string) {
-    this.token="Bearer "+tok;
+    localStorage.setItem('token', "Bearer "+tok);
   }
 
-  vratiToken(): string {
-    return this.token;
+  vratiToken() {
+    var token=localStorage.getItem('token');
+    if(token==null) {
+      return "";
+    } else {
+      return token.toString();
+    }
   }
 
-  postaviUsera(id: number) {
-    this.userId=id;
+  postaviUsera(usr: UserDto) {
+    localStorage.setItem('username', usr.username);
   }
 
-  vratiUsera(): number {
-    return this.userId;
+  vratiUsera(): string {
+    var user=localStorage.getItem('username');
+    if(user==null) {
+      return "";
+    } else {
+      return user.toString();
+    }
+  }
+
+  isLogged(): boolean {
+    return this.vratiToken() != null;
+  }
+
+  logout() {
+    localStorage.clear();
   }
 }
