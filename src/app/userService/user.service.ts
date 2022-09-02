@@ -41,14 +41,4 @@ export class UserService {
     {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
   }
 
-  getInboxUsers(forId: number):Observable<UserDto[]> {
-    return this.httpClient.get<UserDto[]>(`https://localhost:7042/message/inbox/${forId}`,
-    {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
-  }
-
-  getMessages(forId:number, fromId:number):Observable<Message[]> {
-    return this.httpClient.get<Message[]>(`https://localhost:7042/message/${forId}/${fromId}`,
-    {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
-  }
-
 }
