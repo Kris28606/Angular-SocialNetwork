@@ -1,4 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { UserDto } from 'src/app/model/user/userDto';
+import { TokenService } from 'src/app/token/token.service';
+import { UserService } from 'src/app/userService/user.service';
 import { Post } from '../model/post';
 
 @Component({
@@ -9,9 +12,14 @@ import { Post } from '../model/post';
 export class PostComponent implements OnInit {
 
   @Input() post: Post=new Post();
-  constructor() { }
+  user: UserDto=new UserDto();
+  constructor(private userService: UserService, private tokenService: TokenService) { }
 
   ngOnInit(): void {
+    this.user.username=this.tokenService.vratiUsera();
+    this.userService.ucitajUseraId(this.post.userId).subscribe(data=> {
+      this.user=data;
+    })
   }
 
 }
