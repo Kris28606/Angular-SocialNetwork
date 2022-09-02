@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Message } from '../chat/model/message';
 import { Post } from '../home/components/post/model/post';
 import { UserDto } from '../model/user/userDto';
 import { TokenService } from '../token/token.service';
@@ -15,8 +16,13 @@ export class UserService {
     this.baseUrl="https://localhost:7042/user";
   }
 
-  ucitajUsera(id: number):Observable<UserDto> {
-    return this.httpClient.get<UserDto>(`${this.baseUrl}/${id}`,
+  ucitajUseraId(id: number):Observable<UserDto> {
+    return this.httpClient.get<UserDto>(`${this.baseUrl}/one/${id}`,
+    {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
+  }
+
+  ucitajUsera(username: string):Observable<UserDto> {
+    return this.httpClient.get<UserDto>(`${this.baseUrl}/${username}`,
     {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
   }
 
@@ -32,6 +38,16 @@ export class UserService {
 
   changeProfilePicture(user: UserDto):Observable<Object> {
     return this.httpClient.post<Object>(`${this.baseUrl}/changePicture`, user,
+    {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
+  }
+
+  getInboxUsers(forId: number):Observable<UserDto[]> {
+    return this.httpClient.get<UserDto[]>(`https://localhost:7042/message/inbox/${forId}`,
+    {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
+  }
+
+  getMessages(forId:number, fromId:number):Observable<Message[]> {
+    return this.httpClient.get<Message[]>(`https://localhost:7042/message/${forId}/${fromId}`,
     {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
   }
 
