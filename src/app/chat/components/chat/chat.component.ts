@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { UserDto } from 'src/app/model/user/userDto';
 import { TokenService } from 'src/app/token/token.service';
 import { UserService } from 'src/app/userService/user.service';
+import { MessageService } from '../../service/message.service';
 
 @Component({
   selector: 'app-chat',
@@ -12,7 +13,8 @@ import { UserService } from 'src/app/userService/user.service';
 export class ChatComponent implements OnInit {
 
   kriterijum: string="";
-  constructor(private router: Router,private userService: UserService, private tokenService: TokenService) { }
+  constructor(private router: Router,private userService: UserService, private tokenService: TokenService,
+    private messageService: MessageService) { }
 
   inboxUsers: UserDto[]=[];
   trenutniUser: UserDto=new UserDto();
@@ -24,7 +26,7 @@ export class ChatComponent implements OnInit {
     this.userService.ucitajUsera(this.tokenService.vratiUsera()).subscribe(data=> {
       this.trenutniUser=data;
 
-      this.userService.getInboxUsers(this.trenutniUser.id).subscribe(data=> {
+      this.messageService.getInboxUsers(this.trenutniUser.id).subscribe(data=> {
         this.inboxUsers=data;
       }, error => {
         console.log(error.message);
