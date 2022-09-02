@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { UserDto } from 'src/app/model/user/userDto';
 import { PictureService } from 'src/app/pictureService/picture.service';
 import { PostService } from 'src/app/postService/post.service';
+import { UserService } from 'src/app/userService/user.service';
 import Swal from 'sweetalert2';
 import { Post } from '../../post/model/post';
 
