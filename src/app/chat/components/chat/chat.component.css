@@ -1,0 +1,46 @@
+.header {
+    padding: 10px;
+    background-color: blue;
+}
+
+h1 {
+    margin-left: 10px;
+}
+
+h1:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#pretragaDesno{
+    margin-left: 150px;
+}
+
+#pretragaDesno button {
+    margin-left: 50px;
+    font-size: large;
+    color: white;
+}
+
+.sadrzaj{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    margin:auto;
+}
+
+.chat #naslov{
+    border: 1px black solid;
+    margin-top: 20px;
+    width: 615px;
+    margin-left: 20px;
+}
+
+.chat #poruke {
+    margin-left: 20px;
+}
+
+#naslov, #lista{
+    border: 1px black solid;
+    margin-top: 20px;
+    margin-left: 20px;
+}
