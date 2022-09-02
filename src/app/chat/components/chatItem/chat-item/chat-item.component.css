@@ -1,0 +1,85 @@
+#from {
+    width: 600px;
+    display: grid;
+    min-height: 20%;
+    max-height: 80%;
+    margin: 5px;
+    border: 0px black solid;
+}
+
+#for {
+    width: 600px;
+    display: grid;
+    min-height: 20%;
+    max-height: 80%;
+    margin: 5px;
+    padding-right: 10px;
+    border: 0px black solid;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    box-shadow: inset 0 0 5px gainsboro;
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #1c9e5d;
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+img {
+    border: 0px black solid;
+    margin-top: 8px;
+    margin-left: 20px;
+}
+
+#slika img {
+    border-radius: 100px;
+}
+
+#forPoruka, #fromPoruka{
+    border: 1px black solid;
+    display: grid;
+    grid-template-rows: 70% 30%;
+}
+
+p{
+    font-size: medium;
+}
+
+#forPoruka {
+    text-align: right;
+}
+
+h1{
+    padding-left: 0px;
+    font-size: large;
+}
+
+.poruke {
+    border: 2px black solid;
+    width: 615px;
+    max-height: 400px
+}
+
+::-webkit-scrollbar-button:vertical:increment {
+    width: 10px;
+}
+
+  
+  .poruke::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  .poruke::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  .poruke::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }

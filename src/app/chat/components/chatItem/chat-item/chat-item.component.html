@@ -1,0 +1,19 @@
+<div class="poruke" style=" overflow: scroll; overflow-x: hidden; " #scrollMe [scrollTop]="scrollMe.scrollHeight">
+    <hr>
+    <div *ngFor="let mess of messages">
+    <div id="from" *ngIf="!for(mess)">
+        <div id="fromPoruka">
+            <!-- <h1 style="background-color: blue; color: white;">Kristina Stanisavljevic</h1> -->
+            <p style="padding-left: 7px; padding-top: 5px;"> {{mess.messageText}}</p>
+            <p style="font-size: small; padding-left: 7px;">{{mess.time | date: 'dd.MM.yyyy. HH:mm'}}</p>
+        </div>
+    </div>
+    <div id="for" *ngIf="for(mess)">
+        <div id="forPoruka">
+            <!-- <h1 style="background-color: blue; color: white;">Kristina Stanisavljevic</h1> -->
+            <p style="padding-right: 15px; padding-top: 5px;">{{mess.messageText}}</p>
+            <p style="font-size: small; padding-right: 15px;">{{mess.time | date: 'dd.MM.yyyy. HH:mm'}}</p>
+        </div>
+    </div>
+    </div>
+</div>
