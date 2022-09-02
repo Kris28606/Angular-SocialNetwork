@@ -23,13 +23,13 @@ h1:hover {
 }
 
 .sadrzaj{
+    margin-left: 20px;
+    margin-top: 5px;
     display: grid;
     grid-template-columns: 30% 70%;
-    margin:auto;
 }
 
 .chat #naslov{
-    border: 1px black solid;
     margin-top: 20px;
     width: 615px;
     margin-left: 20px;
@@ -40,7 +40,6 @@ h1:hover {
 }
 
 #naslov, #lista{
-    border: 1px black solid;
     margin-top: 20px;
     margin-left: 20px;
 }
