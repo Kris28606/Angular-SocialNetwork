@@ -14,7 +14,6 @@ export class SearchComponent implements OnInit {
   constructor(private tokenService: TokenService) { }
 
   ngOnInit(): void {
-    this.ulogovani=this.tokenService.vratiUsera();
   }
 
   posaljiZahtev() {
