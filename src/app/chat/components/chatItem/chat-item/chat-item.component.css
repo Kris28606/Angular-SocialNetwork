@@ -1,52 +1,46 @@
 #from {
     width: 600px;
     display: grid;
-    min-height: 20%;
     max-height: 80%;
-    margin: 5px;
-    border: 0px black solid;
+    padding-left: 5px; 
 }
 
 #for {
     width: 600px;
     display: grid;
-    min-height: 20%;
+    
     max-height: 80%;
-    margin: 5px;
-    padding-right: 10px;
-    border: 0px black solid;
+     margin: 5px;
+    padding-right: 5px; 
+    
 }
-
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    box-shadow: inset 0 0 5px gainsboro;
-    border-radius: 10px;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: #1c9e5d;
-    border-radius: 10px;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
-
 img {
     border: 0px black solid;
     margin-top: 8px;
-    margin-left: 20px;
+    margin-left: 5px;
 }
 
 #slika img {
     border-radius: 100px;
 }
 
-#forPoruka, #fromPoruka{
-    border: 1px black solid;
+#sadrzajPoruke{
     display: grid;
     grid-template-rows: 70% 30%;
 }
+
+#forPoruka {
+  margin-right: 12px;
+  display: grid;
+    grid-template-columns: 90% 10%;
+}
+
+#fromPoruka {
+  margin-left: 5px;
+  display: grid;
+    grid-template-columns: 10% 90%;
+}
+
 
 p{
     font-size: medium;
@@ -62,9 +56,10 @@ h1{
 }
 
 .poruke {
-    border: 2px black solid;
+    background-color: rgb(242, 249, 255);
     width: 615px;
-    max-height: 400px
+    max-height: 480px;
+    border: 1px rgb(148, 148, 148) solid;
 }
 
 ::-webkit-scrollbar-button:vertical:increment {
