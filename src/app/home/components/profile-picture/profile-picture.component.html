@@ -1,6 +1,6 @@
 <div class="profile" >
         <div id="picture">
-            <img src="/assets/images/People/bill-gates.jpg" style="width: 150px; height: 150px;">
+            <img src={{user.profilePicture}} style="width: 150px; height: 150px;">
         </div>
         <div id="podaci">
             <h1 (click)="openProfile()">{{user.firstName}} {{user.lastName}}</h1>

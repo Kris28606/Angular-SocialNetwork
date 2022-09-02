@@ -11,7 +11,7 @@ export class ProfilePictureComponent implements OnInit {
 
   @Input() user: UserDto=new UserDto();
   constructor(private router: Router) {
-    console.log("User:" +this.user.firstName);
+    
    }
 
   ngOnInit(): void {
