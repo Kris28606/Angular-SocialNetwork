@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ChatComponent } from './chat/components/chat/chat.component';
 import { HomeComponent } from './home/components/home/home.component';
 import { LoginComponent } from './login/components/login/login.component';
 import { RegisterComponent } from './login/components/register/register.component';
+import { NotificationComponent } from './notifications/components/notification/notification.component';
 import { ProfileComponent } from './profile/components/profile/profile.component';
 
 const routes: Routes = [
@@ -20,6 +22,12 @@ const routes: Routes = [
   },
   {
     path: 'profile/:id', component: ProfileComponent
+  },
+  {
+    path: 'chat', component: ChatComponent
+  },
+  {
+    path: 'notifications', component: NotificationComponent
   }
 
 ];

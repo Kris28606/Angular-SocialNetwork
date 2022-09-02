@@ -15,6 +15,9 @@ import { PostComponent } from './home/components/post/post/post.component';
 import { ProfileComponent } from './profile/components/profile/profile.component';
 import { NewPostComponent } from './home/components/newPost/new-post/new-post.component';
 import { SearchComponent } from './search/search/search.component';
+import { ChatComponent } from './chat/components/chat/chat.component';
+import { NotificationComponent } from './notifications/components/notification/notification.component';
+import { ChatItemComponent } from './chat/components/chatItem/chat-item/chat-item.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { SearchComponent } from './search/search/search.component';
     PostComponent,
     ProfileComponent,
     NewPostComponent,
-    SearchComponent
+    SearchComponent,
+    ChatComponent,
+    NotificationComponent,
+    ChatItemComponent
   ],
   imports: [
     BrowserModule,
