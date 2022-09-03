@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserDto } from 'src/app/model/user/userDto';
 import { TokenService } from 'src/app/token/token.service';
 import { UserService } from 'src/app/userService/user.service';
@@ -13,7 +14,8 @@ export class PostComponent implements OnInit {
 
   @Input() post: Post=new Post();
   user: UserDto=new UserDto();
-  constructor(private userService: UserService, private tokenService: TokenService) { }
+  constructor(private userService: UserService, private tokenService: TokenService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.user.username=this.tokenService.vratiUsera();
@@ -22,4 +24,7 @@ export class PostComponent implements OnInit {
     })
   }
 
+  idiNaProfil() {
+    this.router.navigate(['profile', this.user.id]);
+  }
 }

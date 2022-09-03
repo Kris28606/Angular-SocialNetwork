@@ -10,17 +10,21 @@
     <div id="pretragaDesno" style="display: inline;">
         <h1 style="display: inline;"><a href="" style="text-decoration: none; color: white;"><i class="bi bi-bell"></i></a></h1>
         <h1 style="display: inline;"><a href="/chat" style="margin-left: 20px;"><i class="bi bi-chat-left-dots" style="color: white;"></i></a></h1>
-        <button class="btn">Log out <h1 style="display: inline;"><i class="bi bi-box-arrow-right"></i></h1> </button>
+        <button class="btn" (click)="logOut()">Log out <h1 style="display: inline;"><i class="bi bi-box-arrow-right"></i></h1> </button>
     </div>
 </div>
 <div class="sadrzaj">
     <div id="profile">
         <app-profile-picture [user]="user"></app-profile-picture>
-        <button class="btn" (click)="changePicture($event)">Change picture</button>
-        <input *ngIf="izmena" type="file" class="form-control" accept="image/png, image/jpeg" id="formFile" (change)="select($event)">
+        <div *ngIf="mojProfil">
+            <button class="btn" (click)="changePicture($event)">Change picture</button>
+            <input *ngIf="izmena" type="file" class="form-control" accept="image/png, image/jpeg" id="formFile" (change)="select($event)">
+        </div>
     </div>
     <div class="posts">
-        <app-new-post [user]="user"></app-new-post>
+        <div *ngIf="mojProfil">
+            <app-new-post [user]="user"></app-new-post>
+        </div>
         <app-post *ngFor="let post of posts" [post]="post"></app-post>
     </div>
     <div class="chat">
