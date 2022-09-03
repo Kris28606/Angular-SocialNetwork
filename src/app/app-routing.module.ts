@@ -6,6 +6,7 @@ import { LoginComponent } from './login/components/login/login.component';
 import { RegisterComponent } from './login/components/register/register.component';
 import { NotificationComponent } from './notifications/components/notification/notification.component';
 import { ProfileComponent } from './profile/components/profile/profile.component';
+import { GuardGuard } from './token/guard.guard';
 
 const routes: Routes = [
   {
@@ -18,16 +19,20 @@ const routes: Routes = [
     path:'register', component: RegisterComponent
   },
   {
-    path: 'home/:id', component: HomeComponent
+    path: 'home/:id', component: HomeComponent,
+    canActivate: [GuardGuard] 
   },
   {
-    path: 'profile/:id', component: ProfileComponent
+    path: 'profile/:id', component: ProfileComponent,
+    canActivate: [GuardGuard] 
   },
   {
-    path: 'chat', component: ChatComponent
+    path: 'chat', component: ChatComponent,
+    canActivate: [GuardGuard] 
   },
   {
-    path: 'notifications', component: NotificationComponent
+    path: 'notifications', component: NotificationComponent,
+    canActivate: [GuardGuard] 
   }
 
 ];

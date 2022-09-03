@@ -18,6 +18,7 @@ import { SearchComponent } from './search/search/search.component';
 import { ChatComponent } from './chat/components/chat/chat.component';
 import { NotificationComponent } from './notifications/components/notification/notification.component';
 import { ChatItemComponent } from './chat/components/chatItem/chat-item/chat-item.component';
+import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ChatItemComponent } from './chat/components/chatItem/chat-item/chat-ite
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [ { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

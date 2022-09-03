@@ -1,5 +1,7 @@
 import { HttpClientJsonpModule, JsonpInterceptor } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { UserDto } from '../model/user/userDto';
 
 @Injectable({
@@ -10,7 +12,7 @@ export class TokenService {
   token: string="";
   userId: number=0;
 
-  constructor() { }
+  constructor(public jwtHelper: JwtHelperService, private router: Router) { }
 
   postaviToken(tok: string) {
     localStorage.setItem('token', "Bearer "+tok);
@@ -44,5 +46,12 @@ export class TokenService {
 
   logout() {
     localStorage.clear();
+    this.router.navigate(['login']);
+  }
+
+  public isAuthenticated(): boolean {
+    const token = localStorage.getItem('token');
+    
+    return !this.jwtHelper.isTokenExpired(token?.toString());
   }
 }
