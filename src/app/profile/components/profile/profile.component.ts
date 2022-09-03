@@ -19,6 +19,8 @@ export class ProfileComponent implements OnInit {
   kriterijum: string="";
   file: any;
   data=new FormData();
+  userId: number=0;
+  mojProfil=false;
 
 
   constructor(private userService: UserService, private route: ActivatedRoute, private router: Router,
@@ -26,11 +28,14 @@ export class ProfileComponent implements OnInit {
     
   }
   ngOnInit(): void {
-    this.user.username=this.tokenService.vratiUsera();
-    this.userService.ucitajUsera(this.user.username).subscribe(data=> {
+    this.userId=this.route.snapshot.params['id'];
+    this.userService.ucitajUseraId(this.userId).subscribe(data=> {
       this.user=data;
-      console.log("Home: "+this.user.firstName);
-      console.log("IDDDDDDDD: "+this.user.id);
+      if(this.user.username==this.tokenService.vratiUsera()) {
+        this.mojProfil=true;
+      } else {
+        this.mojProfil=false;
+      }
       this.userService.GetMyPosts(this.user.id).subscribe(data=> {
       this.posts=data;
       }, error => {
@@ -84,6 +89,10 @@ export class ProfileComponent implements OnInit {
   select(env: any) {
     this.file=env.target.files[0];
     console.log(this.file);
+  }
+
+  logOut() {
+    this.tokenService.logout();
   }
 
 }
