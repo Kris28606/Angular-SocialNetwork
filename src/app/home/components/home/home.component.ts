@@ -57,4 +57,7 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['home', this.user.id]);
   }
 
+  logOut() {
+    this.tokenService.logout();
+  }
 }

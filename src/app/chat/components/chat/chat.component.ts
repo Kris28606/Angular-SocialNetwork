@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserDto } from 'src/app/model/user/userDto';
@@ -49,5 +50,9 @@ export class ChatComponent implements OnInit {
     this.selektovaniUser=usr;
     this.prikazi=true;
     console.log("Desilo se "+this.selektovaniUser.username);
+  }
+
+  logOut() {
+    this.tokenService.logout();
   }
 }

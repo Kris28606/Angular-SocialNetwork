@@ -1,11 +1,11 @@
 <div class="header">
     <div id="naziv" style="display: inline;">
-        <h1 (click)="goToHomePage()" style="display: inline; color: white;">Social Network</h1>
+        <h1 (click)="goToHomePage()" style="display: inline; color: white; margin-right: 600px;">Social Network</h1>
     </div>
-    <div id="pretragaDesno" style="display: inline;">
+    <div id="pretragaDesno" style="display: inline; ">
         <h1 style="display: inline;"><a href="" style="text-decoration: none; color: white;"><i class="bi bi-bell"></i></a></h1>
         <h1 style="display: inline;"><a href="/chat" style="margin-left: 20px;" ><i class="bi bi-chat-left-dots" style="color: white;"></i></a></h1>
-        <button class="btn">Log out <h1 style="display: inline;"><i class="bi bi-box-arrow-right"></i></h1> </button>
+        <button class="btn" (click)="logOut()">Log out <h1 style="display: inline;"><i class="bi bi-box-arrow-right"></i></h1> </button>
     </div>
 </div>
 
