@@ -12,6 +12,10 @@ h1:hover {
     text-decoration: underline;
 }
 
+#logo{
+    margin: 100px;
+}
+
 #pretragaDesno{
     margin-left: 150px;
 }

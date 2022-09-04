@@ -1,6 +1,6 @@
 <div class="header">
     <div id="naziv" style="display: inline;">
-        <h1 (click)="goToHomePage()" style="display: inline; color: white; margin-right: 600px;">Social Network</h1>
+        <h1 (click)="goToHomePage()" style="display: inline; color: white; margin-right: 600px;"><i>Reach me</i></h1>
     </div>
     <div id="pretragaDesno" style="display: inline; ">
         <h1 style="display: inline;"><a href="" style="text-decoration: none; color: white;"><i class="bi bi-bell"></i></a></h1>
@@ -11,7 +11,7 @@
 
 <div class="sadrzaj" >
 
-    <div id="users" style="border: 1px gray solid; height: 540px;">
+    <div id="users" style="border: 1px gray solid; border-radius: 30px; height: 540px;">
         <div id="naslov">
         <input type="text" class="form-control" placeholder="Search inbox" (keyup)="onChange()" [(ngModel)]="kriterijum" name="search" style="width: 330px; display: inline-block;">
         <h1 style="display: inline;"><a href="" ><i class="bi bi-search" style="color: black;"></i></a></h1>
@@ -26,8 +26,11 @@
             </div>
         </div>
     </div>
+    <div *ngIf="!prikazi"> 
+        <img id="logo" style="margin: 100px;" src="/assets/images/logo.png">
+    </div>
     <div class="chat" *ngIf="prikazi">
-        <div id="naslov" style="background-color: blue; color: white; height: 40px;">
+        <div id="naslov" style="background-color: #0000ff; color: white; height: 40px;">
             <h1 style="margin-top: 8px;">{{selektovaniUser.firstName}} {{selektovaniUser.lastName}}</h1>
         </div>
         <div id="poruke" style="margin-top:0px;">

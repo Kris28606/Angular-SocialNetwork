@@ -3,6 +3,7 @@
     display: grid;
     grid-template-columns: 20% 80%;
     border: 1px gray solid;
+    border-radius: 30px;
     padding: 10px;
 }
 

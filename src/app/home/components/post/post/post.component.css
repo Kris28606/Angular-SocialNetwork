@@ -12,6 +12,11 @@
     border: 0px black solid;
 }
 
+#numOfLikes:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 #sadrzaj {
     margin-left: 21px;
 }
