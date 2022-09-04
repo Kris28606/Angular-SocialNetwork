@@ -7,4 +7,6 @@ export class UserDto {
     email: string="";
     token: string="";
     profilePicture: string="";
+    iFollow: boolean=false;
+    followingMe: boolean=false;
 }
