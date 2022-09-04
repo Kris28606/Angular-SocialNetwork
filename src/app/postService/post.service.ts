@@ -22,4 +22,14 @@ export class PostService {
     return this.httpClient.post(`${this.baseUrl}/new`, post,
     {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken()), responseType: 'arraybuffer'});
   }
+
+  likeIt(postId:number,user: string):Observable<Object> {
+    return this.httpClient.post(`${this.baseUrl}/like/${postId}/${user}`,
+    {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
+  }
+
+  unliked(postId: number, user:string):Observable<Object> {
+    return this.httpClient.delete(`${this.baseUrl}/unlike/${postId}/${user}`,
+    {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
+  }
 }
