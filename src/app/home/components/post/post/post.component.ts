@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserDto } from 'src/app/model/user/userDto';
+import { PostService } from 'src/app/postService/post.service';
 import { TokenService } from 'src/app/token/token.service';
 import { UserService } from 'src/app/userService/user.service';
 import { Post } from '../model/post';
@@ -15,7 +16,7 @@ export class PostComponent implements OnInit {
   @Input() post: Post=new Post();
   user: UserDto=new UserDto();
   constructor(private userService: UserService, private tokenService: TokenService,
-    private router: Router) { }
+    private router: Router, private postService: PostService) { }
 
   ngOnInit(): void {
     this.user.username=this.tokenService.vratiUsera();
@@ -26,5 +27,25 @@ export class PostComponent implements OnInit {
 
   idiNaProfil() {
     this.router.navigate(['profile', this.user.id]);
+  }
+
+  likeIt() {
+    console.log("Like: "+this.post.postId+" "+this.tokenService.vratiUsera());
+    this.postService.likeIt(this.post.postId,this.tokenService.vratiUsera()).subscribe(data=> {
+      this.post.numberOfLikes=this.post.numberOfLikes+1;
+      this.post.iLiked=true;
+    }, error => {
+      console.log("Greska!");
+      console.log(error.message);
+    })
+  }
+
+  unLikeIt() {
+    this.postService.unliked(this.post.postId, this.tokenService.vratiUsera()).subscribe(data=> {
+      this.post.numberOfLikes=this.post.numberOfLikes-1;
+      this.post.iLiked=false;
+    }, error=> {
+      console.log(error.message);
+    })
   }
 }
