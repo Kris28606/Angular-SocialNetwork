@@ -77,7 +77,7 @@ export class ProfileComponent implements OnInit {
     if(this.kriterijum=="") {
       return;
     }
-    this.userService.SearchUsers(this.kriterijum.trim()).subscribe(data=> {
+    this.userService.SearchUsers(this.kriterijum.trim(), this.user.id).subscribe(data=> {
       console.log("Rezultat: "+data);
     })
   }

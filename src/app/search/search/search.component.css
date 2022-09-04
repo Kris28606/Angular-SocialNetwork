@@ -2,14 +2,21 @@
     margin-top: 20px;
     display: grid;
     grid-template-columns: 20% 80%;
-    border: 1px black solid;
+    border: 1px gray solid;
     padding: 10px;
 }
 
+h1:hover {
+    text-decoration: underline;
+}
+
+h1 {
+    margin-bottom: 3px;
+}
 #content{
     display: grid;
-    grid-template-rows: 70% 30%;
-    border: 1px black solid;
+    grid-template-rows: 60% 40%;
+    border: 0px black solid;
     padding: 10px;
 }
 
