@@ -7,4 +7,6 @@ export class Post {
     name: String=""; 
     ago: String="";
     picture: String="";
+    numberOfLikes: number=0;
+    iLiked: boolean=false;
 }
