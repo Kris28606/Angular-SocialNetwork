@@ -2,12 +2,12 @@
     margin-top: 5px;
     margin-left: 5px;
     padding: 5px;
-    border: 2px black solid;
+    border: 1px gray solid;
     width: 250px;
 }
 
 #picture {
-    border: 2px black solid;
+    border: 0px black solid;
     padding-left: 35px;
 }
 

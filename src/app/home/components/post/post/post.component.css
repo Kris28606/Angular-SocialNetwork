@@ -1,13 +1,14 @@
 .post {
-    margin-top: 5px;
+    margin-top: 3px;
     display: grid;
     grid-template-columns: 20% 80%;
-    border: 1px black solid;
+    border: 0px black solid;
     padding: 10px;
+    border: 1px gray solid;
 }
 
 #objava, #naslov, #sadrzaj, #opis {
-    border: 1px black solid;
+    border: 0px black solid;
 }
 
 #sadrzaj {
@@ -28,6 +29,7 @@ p,h1 {
 
 #slika {
     margin-top: 10px;
+    padding-left: 10px;
 }
 
 #slika img {

@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
       return;
     };
       this.pretraga=true;
-      this.userService.SearchUsers(this.kriterijum.trim()).subscribe(data=> {
+      this.userService.SearchUsers(this.kriterijum.trim(), this.user.id).subscribe(data=> {
        this.users=data;
       console.log("Rezultat: "+data);
       });
