@@ -3,11 +3,14 @@
         <img src={{user.profilePicture}} style="width: 70px; height: 70px;">
     </div>
     <div id="content">
-        <div id="user">
-            <h1 style="text-align: center;">{{user.firstName}} {{user.lastName}}</h1>
+        <div id="user" style="text-align: center;">
+            <h1 (click)="idiNaProfil()">{{user.firstName}} {{user.lastName}}</h1>
+            <p *ngIf="user.followingMe">Follows you</p>
+            <p *ngIf="!user.followingMe"></p>
         </div>
         <div id="dugme">
-            <button class="btn" (click)="posaljiZahtev()" style="width: 100%; background-color: blue; color: white; margin-bottom: 5px;">Send request</button>
+            <button class="btn" *ngIf="!user.iFollow" (click)="zaprati()" style="width: 100%; background-color: blue; color: white; margin-bottom: 5px;">Follow <i class="bi bi-person-plus"></i></button>
+            <button class="btn" *ngIf="user.iFollow" (click)="otprati()" style="width: 100%; background-color: red; color: white; margin-bottom: 5px;">Unfollow <i class="bi bi-person-x"></i></button>
         </div>
     </div>
 </div>
