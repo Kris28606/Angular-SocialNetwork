@@ -31,8 +31,8 @@ export class UserService {
     {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
   }
   
-  SearchUsers(kriterijum: String):Observable<UserDto[]> {
-    return this.httpClient.post<UserDto[]>(this.baseUrl+"/search", JSON.stringify(kriterijum),
+  SearchUsers(kriterijum: String, id: number):Observable<UserDto[]> {
+    return this.httpClient.post<UserDto[]>(`${this.baseUrl}/search/${id}`, JSON.stringify(kriterijum),
     {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
   }
 
@@ -41,4 +41,13 @@ export class UserService {
     {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
   }
 
+  Unfollow(username: string, unfollowId: number):Observable<Object> {
+    return this.httpClient.delete(`${this.baseUrl}/unfollow/${username}/${unfollowId}`,
+    {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
+  }
+
+  Follow(username: string, followId: number):Observable<Object> {
+    return this.httpClient.post<Object>(`${this.baseUrl}/follow/${followId}`, JSON.stringify(username),
+    {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
+  }
 }
