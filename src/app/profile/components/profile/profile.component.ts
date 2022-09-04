@@ -21,6 +21,8 @@ export class ProfileComponent implements OnInit {
   data=new FormData();
   userId: number=0;
   mojProfil=false;
+  pretraga=false;
+  users: UserDto[]=[];
 
 
   constructor(private userService: UserService, private route: ActivatedRoute, private router: Router,
@@ -42,9 +44,19 @@ export class ProfileComponent implements OnInit {
         console.log(error.message);
       })
     });
+  }
 
-    
-    
+
+  onChange(event : any){
+    if(this.kriterijum=="") {
+      this.pretraga=false;
+      return;
+    };
+      this.pretraga=true;
+      this.userService.SearchUsers(this.kriterijum.trim(), this.user.id).subscribe(data=> {
+       this.users=data;
+      console.log("Rezultat: "+data);
+      });
   }
 
   changePicture(evt: any) {
@@ -71,15 +83,6 @@ export class ProfileComponent implements OnInit {
         console.log(error.message);
       });
     }
-  }
-
-  onChange(){
-    if(this.kriterijum=="") {
-      return;
-    }
-    this.userService.SearchUsers(this.kriterijum.trim(), this.user.id).subscribe(data=> {
-      console.log("Rezultat: "+data);
-    })
   }
 
   goToHomePage() {

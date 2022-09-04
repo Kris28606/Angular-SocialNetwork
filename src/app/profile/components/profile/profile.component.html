@@ -3,7 +3,7 @@
         <h1 (click)="goToHomePage()" style="display: inline; color: white;">Social Network</h1>
     </div>
     <div id="pretragaLevo" style="display: inline;">
-        <input type="text" class="form-control" placeholder="Search" (keyup)="onChange()" [(ngModel)]="kriterijum" name="search" style="width: 350px; display: inline-block;">
+        <input type="text" class="form-control" placeholder="Search" (keyup)="onChange($event)" [(ngModel)]="kriterijum" name="search" style="width: 350px; display: inline-block;">
         <h1 style="display: inline;"><a href="" ><i class="bi bi-search" style="color: white;"></i></a></h1>
         
     </div>
@@ -21,11 +21,16 @@
             <input *ngIf="izmena" type="file" class="form-control" accept="image/png, image/jpeg" id="formFile" (change)="select($event)">
         </div>
     </div>
-    <div class="posts">
-        <div *ngIf="mojProfil">
-            <app-new-post [user]="user"></app-new-post>
+    <div>
+        <div class="search" *ngIf="pretraga">
+            <app-search *ngFor="let user of users" [user]="user"></app-search>
         </div>
-        <app-post *ngFor="let post of posts" [post]="post"></app-post>
+        <div class="posts" *ngIf="!pretraga">
+            <div *ngIf="mojProfil">
+                <app-new-post [user]="user"></app-new-post>
+            </div>
+            <app-post *ngFor="let post of posts" [post]="post"></app-post>
+        </div>
     </div>
     <div class="chat">
 

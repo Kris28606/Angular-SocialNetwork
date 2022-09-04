@@ -9,4 +9,5 @@ export class Post {
     picture: String="";
     numberOfLikes: number=0;
     iLiked: boolean=false;
+    numberOfComments: number=0;
 }
