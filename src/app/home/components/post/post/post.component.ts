@@ -5,6 +5,7 @@ import { UserDto } from 'src/app/model/user/userDto';
 import { PostService } from 'src/app/postService/post.service';
 import { TokenService } from 'src/app/token/token.service';
 import { UserService } from 'src/app/userService/user.service';
+import { CommentsComponent } from '../../comments/comments.component';
 import { LikesComponent } from '../../likes/likes/likes.component';
 import { Post } from '../model/post';
 
@@ -58,6 +59,8 @@ export class PostComponent implements OnInit {
   }
 
   showComments() {
-    
+    this.dialog.open(CommentsComponent, {
+      data: this.post
+    });
   }
 }
