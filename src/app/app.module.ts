@@ -19,6 +19,8 @@ import { ChatComponent } from './chat/components/chat/chat.component';
 import { NotificationComponent } from './notifications/components/notification/notification.component';
 import { ChatItemComponent } from './chat/components/chatItem/chat-item/chat-item.component';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+import { LikesComponent } from './home/components/likes/likes/likes.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
     SearchComponent,
     ChatComponent,
     NotificationComponent,
-    ChatItemComponent
+    ChatItemComponent,
+    LikesComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
     BrowserAnimationsModule,
     MatIconModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   ],
   providers: [ { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     JwtHelperService],

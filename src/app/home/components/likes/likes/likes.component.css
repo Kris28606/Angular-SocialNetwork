@@ -1,0 +1,6 @@
+#users {
+    display: grid;
+    grid-template-columns: 20% 55% 25%;
+    width: 320px;
+    border-bottom: 1px gray solid;
+}
