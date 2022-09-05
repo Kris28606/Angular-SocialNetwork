@@ -2,6 +2,7 @@ import { HttpClient, HttpContext, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Post } from '../home/components/post/model/post';
+import { UserDto } from '../model/user/userDto';
 import { TokenService } from '../token/token.service';
 
 @Injectable({
@@ -24,12 +25,18 @@ export class PostService {
   }
 
   likeIt(postId:number,user: string):Observable<Object> {
-    return this.httpClient.post(`${this.baseUrl}/like/${postId}/${user}`,
-    {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
+    console.log(this.tokenService.vratiToken());
+    return this.httpClient.post(`${this.baseUrl}/like/${postId}/${user}`, null,
+    {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken()), responseType: 'arraybuffer'});
   }
 
   unliked(postId: number, user:string):Observable<Object> {
     return this.httpClient.delete(`${this.baseUrl}/unlike/${postId}/${user}`,
+    {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
+  }
+
+  GetLikesForPost(postId: number, user: string):Observable<UserDto[]> {
+    return this.httpClient.get<UserDto[]>(`${this.baseUrl}/likes/${postId}/${user}`,
     {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
   }
 }
