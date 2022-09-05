@@ -18,10 +18,10 @@
             <div id="like" style="display:inline;">
                 <h1 *ngIf="!post.iLiked" (click)="likeIt()" style="font-size: x-large; display: inline; cursor: pointer;"><i class="bi bi-heart" style="color: red;"></i></h1>
                 <h1 *ngIf="post.iLiked" (click)="unLikeIt()" style="font-size: x-large; display: inline; cursor: pointer;"><i class="bi bi-heart-fill" style="color: red;"></i></h1>
-                <h1 id="numOfLikes" *ngIf="post.numberOfLikes!=0" style="display:inline; font-size: large; padding-left: 5px; ">{{post.numberOfLikes}} people likes this</h1>
+                <h1 id="numOfLikes" (click)="showLikes()" *ngIf="post.numberOfLikes!=0" style="display:inline; font-size: large; padding-left: 5px; ">{{post.numberOfLikes}} people likes this</h1>
             </div>
             <div id="comment" style="display:inline; margin-left: 100px;">
-                <h1 style="display:inline; font-size: large; padding-right: 5px; color:blue; cursor: pointer;">{{post.numberOfComments}} comments</h1>
+                <h1 (click)="showComments()" style="display:inline; font-size: large; padding-right: 5px; color:blue; cursor: pointer;">{{post.numberOfComments}} comments</h1>
             </div>
         </div>
     </div>
