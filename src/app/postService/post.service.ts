@@ -2,6 +2,8 @@ import { HttpClient, HttpContext, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Post } from '../home/components/post/model/post';
+import { Comment } from '../model/comment/comment';
+import { CommentRequest } from '../model/comment/comment-request';
 import { UserDto } from '../model/user/userDto';
 import { TokenService } from '../token/token.service';
 
@@ -37,6 +39,16 @@ export class PostService {
 
   GetLikesForPost(postId: number, user: string):Observable<UserDto[]> {
     return this.httpClient.get<UserDto[]>(`${this.baseUrl}/likes/${postId}/${user}`,
+    {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
+  }
+
+  GetCommentsForPost(postId: number):Observable<Comment[]> {
+    return this.httpClient.get<Comment[]>(`${this.baseUrl}/comments/${postId}`,
+    {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
+  }
+
+  PostComment(com: CommentRequest):Observable<Comment> {
+    return this.httpClient.post<Comment>(`${this.baseUrl}/comment`, com,
     {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
   }
 }
