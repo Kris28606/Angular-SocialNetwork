@@ -1,0 +1,14 @@
+#comments{
+    display: grid;
+    grid-template-columns: 15% 85%;
+    width: 380px;
+    border-bottom: 1px gray solid;
+    
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+#username:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
