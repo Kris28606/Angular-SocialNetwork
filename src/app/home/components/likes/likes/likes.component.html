@@ -1,18 +1,20 @@
-<h1 style="text-align: center;"><i class="bi bi-heart-fill" style="color: red;"></i> {{post.numberOfLikes}}</h1>
-<hr>
-<div id="users" *ngFor="let user of users">
-    <div id="slika">
-        <img src={{user.profilePicture}} style="width:40px; height: 40px; border-radius:100px;">
-    </div>
-    <div id="podaci">
-        <p style="font-size: x-large; margin-bottom: 2px;">{{user.username}}</p>
-        <p>{{user.firstName}} {{user.lastName}}</p>
-    </div>
-    <div id="following">
-        <div id="others" *ngIf="user.username!=trenutniUser">
-            <button *ngIf="user.iFollow" class="btn">Unfollow</button>
-            <button *ngIf="!user.iFollow && user.followingMe" class="btn">Follow back</button>
-            <button *ngIf="!user.iFollow && !user.followingMe" class="btn">Follow</button>
+<div>
+    <h1 style="text-align: center;"><i class="bi bi-heart-fill" style="color: red;"></i> {{post.numberOfLikes}}</h1>
+    <hr>
+    <div id="users" *ngFor="let user of users" style="margin-bottom: 13px;">
+        <div id="slika">
+            <img src={{user.profilePicture}} style="width:40px; height: 40px; border-radius:100px;">
+        </div>
+        <div id="podaci">
+            <p id="username" (click)="idiNaProfil(user)" style="font-size: x-large; margin-bottom: 2px;">{{user.username}}</p>
+            <p>{{user.firstName}} {{user.lastName}}</p>
+        </div>
+        <div id="following">
+            <div id="others" *ngIf="user.username!=trenutniUser">
+                <button *ngIf="user.iFollow" class="btn" style="background-color: red; color: white;">Unfollow</button>
+                <button *ngIf="!user.iFollow && user.followingMe" class="btn" style="background-color: white;">Follow back</button>
+                <button *ngIf="!user.iFollow && !user.followingMe" class="btn" style="background-color: blue; color: white;">Follow</button>
+            </div>
         </div>
     </div>
 </div>

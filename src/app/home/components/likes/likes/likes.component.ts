@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { UserDto } from 'src/app/model/user/userDto';
 import { PostService } from 'src/app/postService/post.service';
 import { TokenService } from 'src/app/token/token.service';
@@ -15,7 +16,8 @@ export class LikesComponent implements OnInit {
   users: UserDto[]=[];
   trenutniUser: string="";
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data:any, private postService: PostService, private tokenService: TokenService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data:any, private postService: PostService, private tokenService: TokenService,
+  private router: Router) { }
 
   ngOnInit(): void {
     this.trenutniUser=this.tokenService.vratiUsera();
@@ -26,6 +28,11 @@ export class LikesComponent implements OnInit {
       console.log(error.message);
     })
 
+  }
+
+  idiNaProfil(user: UserDto) {
+    this.router.navigate(['profile', user.id]);
+    
   }
 
 }

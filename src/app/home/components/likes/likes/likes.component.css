@@ -1,6 +1,11 @@
 #users {
     display: grid;
-    grid-template-columns: 20% 55% 25%;
+    grid-template-columns: 20% 50% 30%;
     width: 320px;
     border-bottom: 1px gray solid;
+}
+
+#username:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }

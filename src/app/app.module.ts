@@ -21,6 +21,7 @@ import { ChatItemComponent } from './chat/components/chatItem/chat-item/chat-ite
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 import { LikesComponent } from './home/components/likes/likes/likes.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { CommentsComponent } from './home/components/comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     ChatComponent,
     NotificationComponent,
     ChatItemComponent,
-    LikesComponent
+    LikesComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,
