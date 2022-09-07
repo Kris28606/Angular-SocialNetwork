@@ -17,8 +17,8 @@ export class PostService {
     this.baseUrl="https://localhost:7042/post";
   }
 
-  getPostsForUser(id: number):Observable<Post[]> {
-    return this.httpClient.get<Post[]>(`${this.baseUrl}/all/${id}`,
+  getPostsForUser(id: number, numOfPosts: number):Observable<Post[]> {
+    return this.httpClient.get<Post[]>(`${this.baseUrl}/all/${id}/${numOfPosts}`,
     {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
   }
   createPost(post: Post):Observable<Object> {
