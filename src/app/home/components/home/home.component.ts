@@ -1,4 +1,3 @@
-import { ConstantPool } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserDto } from 'src/app/model/user/userDto';
@@ -20,6 +19,9 @@ export class HomeComponent implements OnInit {
   kriterijum: string="";
   pretraga: boolean=false;
   users: UserDto[]=[];
+  numOfPosts: number=7;
+  loadMore: boolean=false;
+  newPosts: Post[]=[];
   constructor(private route: ActivatedRoute, private userService: UserService,
     private postService: PostService, private router: Router, private tokenService: TokenService) { }
 
@@ -29,16 +31,38 @@ export class HomeComponent implements OnInit {
     this.userService.ucitajUsera(this.user.username).subscribe(data=> {
       this.user=data;
       console.log(this.user);
-        this.postService.getPostsForUser(this.user.id).subscribe(data=> {
+        this.postService.getPostsForUser(this.user.id, this.numOfPosts).subscribe(data=> {
         this.posts=data;
+        if(this.posts.length==this.numOfPosts) {
+          this.loadMore=true;
+        }
         console.log(this.posts);
       }, error => {
         console.log(error.message);
       });
 
+    }, error=> {
+      console.log(error.message);
     });
 
     
+  }
+
+  loadMoreFunk() {
+    this.postService.getPostsForUser(this.user.id, this.numOfPosts+7).subscribe(data=> {
+      this.newPosts=data;
+      for(let i=0;i<this.newPosts.length;i++) {
+        this.posts.push(this.newPosts[i]);
+      }
+      this.numOfPosts=this.numOfPosts+7;
+      if(this.posts.length==this.numOfPosts) {
+        this.loadMore=true;
+      } else {
+        this.loadMore=false;
+      }
+    }, error => {
+      console.log(error.message);
+    });
   }
 
   onChange(event : any){
