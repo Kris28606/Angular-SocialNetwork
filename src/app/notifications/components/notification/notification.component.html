@@ -1,1 +1,20 @@
-<p>notification works!</p>
+<div class="header">
+    <div id="naziv" style="display: inline;">
+        <img src="/assets/images/logo2.png" style="width: 40px; height: 40px;">
+        <h1 (click)="goToHomePage()" style="display: inline; color: white;">Reach Me</h1>
+    </div>
+    <div id="pretragaLevo" style="display: inline;">
+        <input type="text" class="form-control" placeholder="Search" (keyup)="onChange($event)" [(ngModel)]="kriterijum" name="search" style="width: 350px; display: inline-block;">
+        <h1 style="display: inline;"><a href="" ><i class="bi bi-search" style="color: white;"></i></a></h1>
+        
+    </div>
+    <div id="pretragaDesno" style="display: inline;">
+        <h1 style="display: inline;"><a href="/notifications" style="text-decoration: none; color: white;"><i class="bi bi-bell"></i></a></h1>
+        <h1 style="display: inline;"><a href="/chat" style="margin-left: 20px;" ><i class="bi bi-chat-left-dots" style="color: white;"></i></a></h1>
+        <button class="btn" (click)="logOut()">Log out <h1 style="display: inline;"><i class="bi bi-box-arrow-right"></i></h1> </button>
+    </div>
+</div>
+<div id="sadrzaj"> 
+    
+</div>
+
