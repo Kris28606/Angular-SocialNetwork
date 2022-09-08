@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit {
         console.log("Unesite sve podatke!");
         Swal.fire('Please, fill all the fields!');
       } else{
+        this.user.profilePicture="https://localhost:7042/Resources\Images\avatar.png";
         this.registerService.Register(this.user).subscribe(data=> {
           Swal.fire('You are successfuly registred!');
           this.router.navigate(['login']);
