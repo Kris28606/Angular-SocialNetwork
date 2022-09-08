@@ -20,3 +20,56 @@ h1 {
     font-size: large;
     color: white;
 }
+
+#sadrzaj {
+    text-align: center;
+    width: 80%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 10px;
+}
+
+#likes{
+    border: 1px gray solid;
+    border-radius: 30px;
+    margin-left: 10px;
+    display: grid;
+    grid-template-rows: 10% 90%;
+    height: 550px;
+}
+
+#comments{
+    border: 1px gray solid;
+    border-radius: 30px;
+    margin-left: 10px;
+    display: grid;
+    grid-template-rows: 10% 90%;
+    height: 550px;
+}
+
+#follows{
+    border: 1px gray solid;
+    border-radius: 30px;
+    margin-left: 10px;
+    display: grid;
+    grid-template-rows: 10% 90%;
+    height: 550px;
+}
+
+#naslov {
+    background-color: blue;
+    color: white;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom: 1px gray solid;
+}
+
+#content {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    height: 50px;
+    border-bottom: 1px gray solid;
+}

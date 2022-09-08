@@ -15,6 +15,46 @@
     </div>
 </div>
 <div id="sadrzaj"> 
-    
+    <div id="likes">
+        <div id="naslov">
+            <h1 style="margin-top: 10px;">Likes</h1>
+        </div>
+        <div id="content" *ngFor="let notif of likeNotifications">
+            <div id="slika">
+                <img src={{notif.fromWho.profilePicture}} (click)="idiNaProfil(notif.fromWho.id)" style="width: 45px; height: 45px; border-radius: 100px;">
+            </div>
+            <div id="komentar">
+                <p><b>{{notif.fromWho.username}}</b> liked your post.</p>
+                <p style="font-size: x-small;">{{notif.date | date: 'dd.MM.yyyy. HH:mm'}}</p>
+            </div>
+            <div id="slikaPosta">
+                <img src={{notif.post.picture}} style="width: 45px; height: 45px; border: 1px gray solid;">
+            </div>
+        </div>
+    </div>
+    <div id="comments">
+        <div id="naslov">
+            <h1 style="margin-top: 10px;">Comments</h1>
+        </div>
+        <div id="content">
+            <div id="slika">
+                <img src="">
+            </div>
+            <div id="komentar">
+                <p>Milica Maricic je komentarisala vasu objavu.</p>
+            </div>
+            <div id="slikaPosta">
+                <img src="">
+            </div>
+        </div>
+    </div>
+    <div id="follows">
+        <div id="naslov">
+            <h1 style="margin-top: 10px;">Follows</h1>
+        </div>
+        <div>
+
+        </div>
+    </div>
 </div>
 
