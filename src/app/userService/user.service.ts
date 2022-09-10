@@ -16,8 +16,8 @@ export class UserService {
     this.baseUrl="https://localhost:7042/user";
   }
 
-  ucitajUseraId(id: number):Observable<UserDto> {
-    return this.httpClient.get<UserDto>(`${this.baseUrl}/one/${id}`,
+  ucitajUseraId(id: number, username: String):Observable<UserDto> {
+    return this.httpClient.get<UserDto>(`${this.baseUrl}/one/${id}/${username}`,
     {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
   }
 
