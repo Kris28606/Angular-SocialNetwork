@@ -2,8 +2,10 @@ import { Post } from "src/app/home/components/post/model/post";
 import { UserDto } from "src/app/model/user/userDto";
 
 export class LikeNotification {
-    fromWho: UserDto=new UserDto();
-    forWhoId: number=0;
-    post: Post=new Post();
+    fromWhoId: number=0;
+    fromWhoUsername: String="";
+    fromWhoPicture: String="";
+    postId: number=0;
+    postPicture: String="";
     date!: Date;
 }
