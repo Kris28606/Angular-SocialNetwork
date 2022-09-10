@@ -1,12 +1,13 @@
 <h1 style="text-align: center; font-size: xx-large;"><i class="bi bi-card-text" style="color: blue; display: inline;"></i>  {{post.numberOfComments}}</h1>
 <hr style="margin-bottom: 3px">
 <div id="comments" *ngFor="let comment of comments">
-    <div id="slika" style="margin-bottom: 4px; margin-left: 5px;">
+    <div id="slika" style="margin-top: 4px; margin-left: 5px;">
         <img src={{comment.user.profilePicture}} style="width: 40px; height: 40px; border-radius: 100px;">
     </div>
-    <div id="sadrzaj" style="margin-top: 10px; margin-left: 0px;">
+    <div id="sadrzaj" style="margin-top: 8px; margin-left: 0px;">
         <b><p id="username" (click)="idiNaProfil(comment.user)"style="margin-bottom: 4px; display:inline;">{{comment.user.username}}</p></b> 
-        <p style="margin-bottom: 4px; display:inline;">  {{comment.commentText}}</p>
+        <p style="margin-bottom: 2px; display:inline;">  {{comment.commentText}}</p>
+        <p style="font-size: x-small;">{{comment.date | date: 'dd.MM.yyyy. HH:mm'}}</p>
     </div>
 </div>
 <div id="newComment">
