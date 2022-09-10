@@ -2,6 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TokenService } from 'src/app/token/token.service';
+import { CommentNotification } from '../model/comment/comment-notification';
+import { FollowNotification } from '../model/follow/follow-notification';
 import { LikeNotification } from '../model/like-notification';
 
 @Injectable({
@@ -18,4 +20,14 @@ export class NotificationService {
     return this.httpClient.get<LikeNotification[]>(`${this.baseURL}/like/${id}`,
     {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
   }
+  GetCommentNotif(id: number):Observable<CommentNotification[]> {
+    return this.httpClient.get<CommentNotification[]>(`${this.baseURL}/comment/${id}`,
+    {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
+  }
+
+  GetFollowNotif(id: number):Observable<FollowNotification[]> {
+    return this.httpClient.get<FollowNotification[]>(`${this.baseURL}/follow/${id}`,
+    {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
+  }
+
 }
