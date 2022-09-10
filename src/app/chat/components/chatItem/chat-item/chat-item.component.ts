@@ -24,7 +24,7 @@ export class ChatItemComponent implements OnInit {
     this.userService.ucitajUsera(this.tokenService.vratiUsera()).subscribe(data=> {
       this.trenutniUser=data;
 
-      this.userService.ucitajUseraId(this.user.id).subscribe(data=> {
+      this.userService.ucitajUseraId(this.user.id, this.trenutniUser.username).subscribe(data=> {
         this.user=data;
           this.messageService.getMessages(this.trenutniUser.id, this.user.id).subscribe(data=> {
           this.messages=data;

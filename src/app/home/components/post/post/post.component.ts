@@ -23,7 +23,7 @@ export class PostComponent implements OnInit {
 
   ngOnInit(): void {
     this.user.username=this.tokenService.vratiUsera();
-    this.userService.ucitajUseraId(this.post.userId).subscribe(data=> {
+    this.userService.ucitajUseraId(this.post.userId, this.user.username).subscribe(data=> {
       this.user=data;
     })
   }

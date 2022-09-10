@@ -23,6 +23,7 @@ export class ProfileComponent implements OnInit {
   mojProfil=false;
   pretraga=false;
   users: UserDto[]=[];
+  username: string="";
 
 
   constructor(private userService: UserService, private route: ActivatedRoute, private router: Router,
@@ -30,8 +31,9 @@ export class ProfileComponent implements OnInit {
     
   }
   ngOnInit(): void {
+    this.username=this.tokenService.vratiUsera();
     this.userId=this.route.snapshot.params['id'];
-    this.userService.ucitajUseraId(this.userId).subscribe(data=> {
+    this.userService.ucitajUseraId(this.userId,this.username).subscribe(data=> {
       this.user=data;
       if(this.user.username==this.tokenService.vratiUsera()) {
         this.mojProfil=true;
@@ -53,6 +55,7 @@ export class ProfileComponent implements OnInit {
       return;
     };
       this.pretraga=true;
+      ///// MORA IZMENA
       this.userService.SearchUsers(this.kriterijum.trim(), this.user.id).subscribe(data=> {
        this.users=data;
       console.log("Rezultat: "+data);
@@ -98,4 +101,19 @@ export class ProfileComponent implements OnInit {
     this.tokenService.logout();
   }
 
+  unfollow() {
+   this.userService.Unfollow(this.username,this.user.id).subscribe(data=> {
+    this.user.iFollow=false;
+   }, error=> {
+    console.log(error.message);
+   });
+  }
+
+  follow() {
+    this.userService.Follow(this.username, this.user.id).subscribe(data=> {
+      this.user.iFollow=true;
+    }, error=> {
+      console.log(error.message);
+     });
+  }
 }
