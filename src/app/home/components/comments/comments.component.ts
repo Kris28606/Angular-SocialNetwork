@@ -4,7 +4,9 @@ import { Router } from '@angular/router';
 import { Comment } from 'src/app/model/comment/comment';
 import { CommentRequest } from 'src/app/model/comment/comment-request';
 import { UserDto } from 'src/app/model/user/userDto';
+import { CommentNotification } from 'src/app/notifications/model/comment/comment-notification';
 import { PostService } from 'src/app/postService/post.service';
+import { SignalRserviceService } from 'src/app/signalR/signal-rservice.service';
 import { TokenService } from 'src/app/token/token.service';
 import { Post } from '../post/model/post';
 
@@ -21,7 +23,7 @@ export class CommentsComponent implements OnInit {
   comment: CommentRequest=new CommentRequest();
   commentNew: Comment=new Comment();
   constructor(@Inject(MAT_DIALOG_DATA) public data:any, private postService: PostService, private tokenService: TokenService,
-  private router: Router) { }
+  private router: Router, private signalR: SignalRserviceService) { }
 
   ngOnInit(): void {
     this.post=this.data;
@@ -31,6 +33,7 @@ export class CommentsComponent implements OnInit {
     }, error => {
       console.log(error.message);
     })
+    this.signalR.startConnection();
   }
 
   postComment() {
@@ -41,6 +44,15 @@ export class CommentsComponent implements OnInit {
       this.comments.push(this.commentNew);
       this.comment.commentText="";
       this.post.numberOfComments=this.post.numberOfComments+1;
+      var com=new CommentNotification();
+      com.comment=this.commentNew.commentText;
+      com.fromWhoId=this.commentNew.user.id;
+      com.fromWhoPicture=this.commentNew.user.profilePicture;
+      com.fromWhoUsername=this.commentNew.user.username;
+      com.date=this.commentNew.date;
+      com.postId=this.post.postId;
+      com.postPicture=this.post.picture;
+      this.obavestiServer(com);
     },error=> {
       console.log(error.message);
     });
@@ -50,5 +62,14 @@ export class CommentsComponent implements OnInit {
     this.router.navigate(['profile', user.id]);
     
   }
+
+  async obavestiServer(com: CommentNotification) {
+    await this.signalR.hubConnection.invoke("SendCommentNotification", com, this.post.userId)
+        .finally(() => {
+          console.log("Loading....");
+        })
+        .catch(error => console.error(error.message));
+  }
+
 
 }

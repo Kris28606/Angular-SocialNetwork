@@ -17,7 +17,6 @@ import { NewPostComponent } from './home/components/newPost/new-post/new-post.co
 import { SearchComponent } from './search/search/search.component';
 import { ChatComponent } from './chat/components/chat/chat.component';
 import { NotificationComponent } from './notifications/components/notification/notification.component';
-import { ChatItemComponent } from './chat/components/chatItem/chat-item/chat-item.component';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 import { LikesComponent } from './home/components/likes/likes/likes.component';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -36,7 +35,6 @@ import { CommentsComponent } from './home/components/comments/comments.component
     SearchComponent,
     ChatComponent,
     NotificationComponent,
-    ChatItemComponent,
     LikesComponent,
     CommentsComponent
   ],

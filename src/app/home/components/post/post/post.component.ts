@@ -2,7 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { UserDto } from 'src/app/model/user/userDto';
+import { LikeNotification } from 'src/app/notifications/model/like-notification';
 import { PostService } from 'src/app/postService/post.service';
+import { SignalRserviceService } from 'src/app/signalR/signal-rservice.service';
 import { TokenService } from 'src/app/token/token.service';
 import { UserService } from 'src/app/userService/user.service';
 import { CommentsComponent } from '../../comments/comments.component';
@@ -19,13 +21,15 @@ export class PostComponent implements OnInit {
   @Input() post: Post=new Post();
   user: UserDto=new UserDto();
   constructor(private userService: UserService, private tokenService: TokenService,
-    private router: Router, private postService: PostService, public dialog: MatDialog) { }
+    private router: Router, private postService: PostService, public dialog: MatDialog,
+    private signalR: SignalRserviceService) { }
 
   ngOnInit(): void {
     this.user.username=this.tokenService.vratiUsera();
     this.userService.ucitajUseraId(this.post.userId, this.user.username).subscribe(data=> {
       this.user=data;
     })
+    this.signalR.startConnection();
   }
 
   idiNaProfil() {
@@ -37,10 +41,19 @@ export class PostComponent implements OnInit {
     this.postService.likeIt(this.post.postId,this.tokenService.vratiUsera()).subscribe(data=> {
       this.post.numberOfLikes=this.post.numberOfLikes+1;
       this.post.iLiked=true;
+      this.obavestiServera(data);
     }, error => {
       console.log("Greska!");
       console.log(error.message);
     })
+  }
+
+  async obavestiServera(data: any) {
+    await this.signalR.hubConnection.invoke("SendLikeNotification", data, this.post.userId)
+        .finally(() => {
+          console.log("Loading....");
+        })
+        .catch(error => console.error(error.message));
   }
 
   unLikeIt() {
