@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   kriterijum: string="";
   pretraga: boolean=false;
   users: UserDto[]=[];
-  numOfPosts: number=7;
+  numOfPosts: number=2;
   loadMore: boolean=false;
   newPosts: Post[]=[];
   constructor(private route: ActivatedRoute, private userService: UserService,
@@ -49,12 +49,12 @@ export class HomeComponent implements OnInit {
   }
 
   loadMoreFunk() {
-    this.postService.getPostsForUser(this.user.id, this.numOfPosts+7).subscribe(data=> {
+    this.postService.getPostsForUser(this.user.id, this.numOfPosts+2).subscribe(data=> {
       this.newPosts=data;
       for(let i=0;i<this.newPosts.length;i++) {
         this.posts.push(this.newPosts[i]);
       }
-      this.numOfPosts=this.numOfPosts+7;
+      this.numOfPosts=this.numOfPosts+2;
       if(this.posts.length==this.numOfPosts) {
         this.loadMore=true;
       } else {
