@@ -3,4 +3,5 @@ export class FollowNotification {
     fromWhoUsername: String="";
     fromWhoId: number=0;
     date!: Date;
+    confirmed: boolean=false;
 }

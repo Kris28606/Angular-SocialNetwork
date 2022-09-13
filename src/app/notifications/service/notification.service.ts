@@ -30,4 +30,9 @@ export class NotificationService {
     {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
   }
 
+  SendRequest(username: string,id: number):Observable<FollowNotification> {
+    return this.httpClient.post<FollowNotification>(`${this.baseURL}/follow/${id}/${username}`,null,
+    {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
+  }
+
 }
