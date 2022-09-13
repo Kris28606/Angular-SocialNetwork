@@ -32,10 +32,44 @@
     </div>
     <div class="chat" *ngIf="prikazi">
         <div id="naslov" style="background-color: #0000ff; color: white; height: 40px;">
-            <h1 style="margin-top: 8px;">{{selektovaniUser.firstName}} {{selektovaniUser.lastName}}</h1>
+            <h1 id="h1Chat" style="margin-top: 8px;">{{selektovaniUser.firstName}} {{selektovaniUser.lastName}}</h1>
         </div>
         <div id="poruke" style="margin-top:0px;">
-        <app-chat-item [user]="selektovaniUser"></app-chat-item>
+        <!-- <app-chat-item [user]="selektovaniUser"></app-chat-item> -->
+        <div class="poruke" style=" overflow: scroll; overflow-x: hidden; " #scrollMe [scrollTop]="scrollMe.scrollHeight">
+            <hr>
+            <div *ngFor="let mess of messages">
+            <div id="from" *ngIf="!for(mess)">
+                <div id="fromPoruka">
+                    <div id="slika">
+                        <img src={{selektovaniUser.profilePicture}} style="width: 40px; height: 40px;">
+                    </div>
+                    <div id="sadrzajPoruke">
+                        <p style="padding-left: 3px; padding-top: 5px;"> {{mess.messageText}}</p>
+                        <p style="font-size: x-small; color: gray; padding-left: 3px;">{{mess.time | date: 'dd.MM.yyyy. HH:mm'}}</p>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div id="for" *ngIf="for(mess)">
+                <div id="forPoruka">
+                    <div id="sadrzaj poruke">
+                        <p style=" padding-top: 5px;">{{mess.messageText}}</p>
+                        <p style="font-size: x-small; color: gray; ">{{mess.time | date: 'dd.MM.yyyy. HH:mm'}}</p>
+                    </div>
+                    <div id="slika">
+                        <img src={{trenutniUser.profilePicture}} style="width: 40px; height: 40px;">
+                    </div>
+                </div>
+                <hr>
+            </div>
+            </div>
+            <div style="margin-bottom: 10px;">
+                <input [(ngModel)]="textZaSlanje" type="text" class="form-control" name="novaPoruka" style="width: 80%; margin-left:7px; display: inline;">
+                <button (click)="posaljiPoruku()" style=" margin-left:7px; background-color: blue; color: white; width:100px; display: inline;" class="btn"><i class="bi bi-send"></i></button>
+            </div>
+        </div>
+        
         </div>
     </div>
 
