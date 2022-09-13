@@ -5,6 +5,7 @@ import { Post } from '../home/components/post/model/post';
 import { Comment } from '../model/comment/comment';
 import { CommentRequest } from '../model/comment/comment-request';
 import { UserDto } from '../model/user/userDto';
+import { LikeNotification } from '../notifications/model/like-notification';
 import { TokenService } from '../token/token.service';
 
 @Injectable({
@@ -26,10 +27,10 @@ export class PostService {
     {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken()), responseType: 'arraybuffer'});
   }
 
-  likeIt(postId:number,user: string):Observable<Object> {
+  likeIt(postId:number,user: string):Observable<LikeNotification> {
     console.log(this.tokenService.vratiToken());
-    return this.httpClient.post(`${this.baseUrl}/like/${postId}/${user}`, null,
-    {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken()), responseType: 'arraybuffer'});
+    return this.httpClient.post<LikeNotification>(`${this.baseUrl}/like/${postId}/${user}`, null,
+    {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
   }
 
   unliked(postId: number, user:string):Observable<Object> {
