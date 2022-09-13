@@ -9,4 +9,5 @@ export class UserDto {
     profilePicture: string="";
     iFollow: boolean=false;
     followingMe: boolean=false;
+    requestSent: boolean=false;
 }

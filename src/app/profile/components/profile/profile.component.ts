@@ -131,8 +131,4 @@ export class ProfileComponent implements OnInit {
         .catch(error => console.error(error.message));
   }
 
-  unsendFollow() {
-
-  }
-
 }
