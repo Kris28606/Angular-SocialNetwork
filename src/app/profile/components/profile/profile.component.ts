@@ -44,7 +44,7 @@ export class ProfileComponent implements OnInit {
       } else {
         this.mojProfil=false;
       }
-      this.userService.GetMyPosts(this.user.id).subscribe(data=> {
+      this.userService.GetMyPosts(this.user.id, this.tokenService.vratiUsera()).subscribe(data=> {
       this.posts=data;
       }, error => {
         console.log(error.message);
@@ -130,4 +130,9 @@ export class ProfileComponent implements OnInit {
         })
         .catch(error => console.error(error.message));
   }
+
+  unsendFollow() {
+
+  }
+
 }

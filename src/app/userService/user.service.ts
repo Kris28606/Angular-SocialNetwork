@@ -26,8 +26,8 @@ export class UserService {
     {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
   }
 
-  GetMyPosts(id: number):Observable<Post[]> {
-    return this.httpClient.get<Post[]>(`${this.baseUrl}/all/${id}`,
+  GetMyPosts(id: number, username: string):Observable<Post[]> {
+    return this.httpClient.get<Post[]>(`${this.baseUrl}/all/${id}/${username}`,
     {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
   }
   
