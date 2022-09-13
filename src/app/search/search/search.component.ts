@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserDto } from 'src/app/model/user/userDto';
+import { NotificationService } from 'src/app/notifications/service/notification.service';
 import { TokenService } from 'src/app/token/token.service';
 import { UserService } from 'src/app/userService/user.service';
 
@@ -13,13 +14,18 @@ export class SearchComponent implements OnInit {
 
   @Input() user: UserDto=new UserDto();
   ulogovani: number=0;
-  constructor(private tokenService: TokenService, private router: Router, private userService: UserService) { }
+  constructor(private tokenService: TokenService, private router: Router, private userService: UserService,
+    private notificationService: NotificationService) { }
 
   ngOnInit(): void {
   }
 
   zaprati() {
-    this.userService.Follow(this.tokenService.vratiUsera(), this.user.id);
+    this.notificationService.SendRequest(this.tokenService.vratiUsera(), this.user.id).subscribe(data=> {
+
+    }, error=> {
+      console.log(error.message);
+    });
   }
 
   idiNaProfil() {

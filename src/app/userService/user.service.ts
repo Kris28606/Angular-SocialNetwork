@@ -46,8 +46,8 @@ export class UserService {
     {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
   }
 
-  Follow(username: string, followId: number):Observable<Object> {
-    return this.httpClient.post<Object>(`${this.baseUrl}/follow/${followId}`, JSON.stringify(username),
+  AddFollower(userId: number, followId: number):Observable<Object> {
+    return this.httpClient.post<Object>(`${this.baseUrl}/follow/${userId}/${followId}`,null,
     {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
   }
 }

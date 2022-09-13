@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from 'src/app/home/components/post/model/post';
 import { UserDto } from 'src/app/model/user/userDto';
+import { FollowNotification } from 'src/app/notifications/model/follow/follow-notification';
+import { NotificationService } from 'src/app/notifications/service/notification.service';
 import { PictureService } from 'src/app/pictureService/picture.service';
+import { SignalRserviceService } from 'src/app/signalR/signal-rservice.service';
 import { TokenService } from 'src/app/token/token.service';
 import { UserService } from 'src/app/userService/user.service';
 
@@ -27,7 +30,8 @@ export class ProfileComponent implements OnInit {
 
 
   constructor(private userService: UserService, private route: ActivatedRoute, private router: Router,
-    private pictureService: PictureService, private tokenService: TokenService) { 
+    private pictureService: PictureService, private tokenService: TokenService, private notificationService: NotificationService,
+    private signalR: SignalRserviceService) { 
     
   }
   ngOnInit(): void {
@@ -110,10 +114,20 @@ export class ProfileComponent implements OnInit {
   }
 
   follow() {
-    this.userService.Follow(this.username, this.user.id).subscribe(data=> {
-      this.user.iFollow=true;
+    this.notificationService.SendRequest(this.username, this.user.id).subscribe(data=> {
+      //treba da se promeni dugme
+      var follow=data;
+      this.obavestiServer(follow);
     }, error=> {
       console.log(error.message);
      });
+  }
+
+  async obavestiServer(not: FollowNotification) {
+    await this.signalR.hubConnection.invoke("SendFollowNotification", not, this.user.id)
+        .finally(() => {
+          console.log("Loading....");
+        })
+        .catch(error => console.error(error.message));
   }
 }
