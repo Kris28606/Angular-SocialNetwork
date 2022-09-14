@@ -149,4 +149,8 @@ export class NotificationComponent implements OnInit {
     })
   }
 
+  deleteRequest(follow: FollowNotification) {
+    this.notificationService.DeleteRequest(follow);
+  }
+
 }

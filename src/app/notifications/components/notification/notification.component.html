@@ -70,7 +70,7 @@
                     <div id="butons" style="margin-bottom: 10px;" *ngIf="followNotifications.length!=0">
                         
                         <button class="btn" (click)="confirmRequest(follow)" style="display: inline; background-color: blue; color: white;margin-right: 5px;">Confirm</button>
-                        <button class="btn" style="display: inline; background-color: red; color: white">Delete</button>
+                        <button class="btn" (click)="deleteRequest(follow)" style="display: inline; background-color: red; color: white">Delete</button>
                     </div>
                 </div>
             </div>
