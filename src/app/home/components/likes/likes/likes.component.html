@@ -11,9 +11,10 @@
         </div>
         <div id="following">
             <div id="others" *ngIf="user.username!=trenutniUser">
-                <button *ngIf="user.iFollow" class="btn" style="background-color: red; color: white;">Unfollow</button>
-                <button *ngIf="!user.iFollow && user.followingMe" class="btn" style="background-color: white;">Follow back</button>
-                <button *ngIf="!user.iFollow && !user.followingMe" class="btn" style="background-color: blue; color: white;">Follow</button>
+                <button *ngIf="user.iFollow" class="btn" (click)="unfollow(user)" style="background-color: red; color: white; width: 100%;">Unfollow</button>
+                <button *ngIf="!user.iFollow && user.followingMe" class="btn" (click)="follow(user)" style="background-color: white; width: 100%;">Follow back</button>
+                <button *ngIf="!user.iFollow && !user.followingMe && !user.requestSent" class="btn" (click)="follow(user)" style="background-color: blue; color: white; width: 100%;">Follow</button>
+                <button *ngIf="!user.iFollow && !user.followingMe && user.requestSent" class="btn" style="background-color: rgb(59, 182, 59); color: white; width: 100%;">Request sent</button>
             </div>
         </div>
     </div>

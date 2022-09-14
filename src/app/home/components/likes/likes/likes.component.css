@@ -1,7 +1,7 @@
 #users {
     display: grid;
-    grid-template-columns: 20% 50% 30%;
-    width: 320px;
+    grid-template-columns: 15% 45% 40%;
+    width: 340px;
     border-bottom: 1px gray solid;
 }
 

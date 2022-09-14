@@ -22,7 +22,7 @@ export class SearchComponent implements OnInit {
 
   zaprati() {
     this.notificationService.SendRequest(this.tokenService.vratiUsera(), this.user.id).subscribe(data=> {
-
+      this.user.requestSent=true;
     }, error=> {
       console.log(error.message);
     });
@@ -35,6 +35,7 @@ export class SearchComponent implements OnInit {
   otprati() {
     this.userService.Unfollow(this.tokenService.vratiUsera(),this.user.id).subscribe(data=> {
       this.user.iFollow=false;
+      this.user.requestSent=false;
     }, error=> {
       console.log(error.message);
     });

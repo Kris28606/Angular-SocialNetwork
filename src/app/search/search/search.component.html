@@ -9,8 +9,9 @@
             <p *ngIf="!user.followingMe"></p>
         </div>
         <div id="dugme">
-            <button class="btn" *ngIf="!user.iFollow" (click)="zaprati()" style="width: 100%; background-color: blue; color: white; margin-bottom: 5px;">Follow <i class="bi bi-person-plus"></i></button>
+            <button class="btn" *ngIf="!user.iFollow && !user.requestSent" (click)="zaprati()" style="width: 100%; background-color: blue; color: white; margin-bottom: 5px;">Follow <i class="bi bi-person-plus"></i></button>
             <button class="btn" *ngIf="user.iFollow" (click)="otprati()" style="width: 100%; background-color: red; color: white; margin-bottom: 5px;">Unfollow <i class="bi bi-person-x"></i></button>
+            <button class="btn" *ngIf="user.requestSent" style="width: 100%; background-color: rgb(59, 182, 59); color: white; margin-bottom: 5px;">Request sent</button>
         </div>
     </div>
 </div>

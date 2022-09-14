@@ -24,8 +24,8 @@
         <div *ngIf="!mojProfil">
             <button *ngIf="user.iFollow" (click)="unfollow()" class="btn" style="background-color: red; color: white; width: 70%;">Unfollow</button>
             <button *ngIf="!user.iFollow && user.followingMe" (click)="follow()" class="btn" style="background-color: rgb(206, 206, 206); color: black; width: 70%;">Follow back</button>
-            <button *ngIf="!user.iFollow && !user.followingMe" (click)="follow()" class="btn" style="background-color: blue; color: white; width: 70%;">Follow</button>
-            <button *ngIf="!user.iFollow && !user.followingMe && user.requestSent" class="btn" style="background-color: rgb(206, 206, 206); color: black; width: 70%;">Unsend follow</button>
+            <button *ngIf="!user.iFollow && !user.followingMe && !user.requestSent" (click)="follow()" class="btn" style="background-color: blue; color: white; width: 70%;">Follow</button>
+            <button *ngIf="!user.iFollow && !user.followingMe && user.requestSent" class="btn" style="background-color: rgb(59, 182, 59); color: white; width: 70%;">Request sent</button>
         </div>
     </div>
     <div>

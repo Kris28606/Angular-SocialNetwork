@@ -115,7 +115,7 @@ export class ProfileComponent implements OnInit {
 
   follow() {
     this.notificationService.SendRequest(this.username, this.user.id).subscribe(data=> {
-      //treba da se promeni dugme
+      this.user.requestSent=true;
       var follow=data;
       this.obavestiServer(follow);
     }, error=> {
