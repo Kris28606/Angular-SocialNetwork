@@ -13,6 +13,29 @@ h1 {
     margin-left: 20px;
 }
 
+#reklama {
+    width: 300px;
+    margin-left: 90px;
+    border: 1px gray solid;
+    border-radius: 30px;
+    padding: 10px;
+    margin-top: 15px;
+    text-align: center;
+    background-color: white;
+}
+
+#reklame {
+    margin-top: 20px;
+}
+
+.sadrzaj {
+    background-color: rgba(240, 235, 255, 0.678);
+}
+
+#reklame img {
+    border: 1px black solid;
+}
+
 #profile button {
     width: 250px; 
     margin-left: 5px; 

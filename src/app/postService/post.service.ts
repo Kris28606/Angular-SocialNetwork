@@ -14,8 +14,12 @@ import { TokenService } from '../token/token.service';
 export class PostService {
 
   private baseUrl;
+  private baseUrlLike;
+  private baseUrlComment;
   constructor(private httpClient: HttpClient, private tokenService: TokenService) { 
     this.baseUrl="https://localhost:7042/post";
+    this.baseUrlLike="https://localhost:7042/like";
+    this.baseUrlComment="https://localhost:7042/comment";
   }
 
   getPostsForUser(id: number, numOfPosts: number):Observable<Post[]> {
@@ -29,27 +33,27 @@ export class PostService {
 
   likeIt(postId:number,user: string):Observable<LikeNotification> {
     console.log(this.tokenService.vratiToken());
-    return this.httpClient.post<LikeNotification>(`${this.baseUrl}/like/${postId}/${user}`, null,
+    return this.httpClient.post<LikeNotification>(`${this.baseUrlLike}/like/${postId}/${user}`, null,
     {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
   }
 
   unliked(postId: number, user:string):Observable<Object> {
-    return this.httpClient.delete(`${this.baseUrl}/unlike/${postId}/${user}`,
+    return this.httpClient.delete(`${this.baseUrlLike}/unlike/${postId}/${user}`,
     {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
   }
 
   GetLikesForPost(postId: number, user: string):Observable<UserDto[]> {
-    return this.httpClient.get<UserDto[]>(`${this.baseUrl}/likes/${postId}/${user}`,
+    return this.httpClient.get<UserDto[]>(`${this.baseUrlLike}/likes/${postId}/${user}`,
     {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
   }
 
   GetCommentsForPost(postId: number):Observable<Comment[]> {
-    return this.httpClient.get<Comment[]>(`${this.baseUrl}/comments/${postId}`,
+    return this.httpClient.get<Comment[]>(`${this.baseUrlComment}/comments/${postId}`,
     {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
   }
 
   PostComment(com: CommentRequest):Observable<Comment> {
-    return this.httpClient.post<Comment>(`${this.baseUrl}/comment`, com,
+    return this.httpClient.post<Comment>(`${this.baseUrlComment}/comment`, com,
     {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
   }
 }

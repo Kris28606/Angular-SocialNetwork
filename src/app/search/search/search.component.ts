@@ -4,6 +4,7 @@ import { UserDto } from 'src/app/model/user/userDto';
 import { NotificationService } from 'src/app/notifications/service/notification.service';
 import { TokenService } from 'src/app/token/token.service';
 import { UserService } from 'src/app/userService/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-search',
@@ -24,6 +25,11 @@ export class SearchComponent implements OnInit {
     this.notificationService.SendRequest(this.tokenService.vratiUsera(), this.user.id).subscribe(data=> {
       this.user.requestSent=true;
     }, error=> {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Sorry, we can’t send your request!'
+      });
       console.log(error.message);
     });
   }

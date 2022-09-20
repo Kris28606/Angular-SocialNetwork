@@ -50,4 +50,9 @@ export class UserService {
     return this.httpClient.post<Object>(`${this.baseUrl}/follow/${userId}/${followId}`,null,
     {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
   }
+
+  GetRandomUsers(id: number):Observable<UserDto[]> {
+    return this.httpClient.get<UserDto[]>(`${this.baseUrl}/random/${id}`,
+    {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
+  }
 }

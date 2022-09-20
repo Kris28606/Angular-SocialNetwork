@@ -7,6 +7,7 @@ import { PostService } from 'src/app/postService/post.service';
 import { SignalRserviceService } from 'src/app/signalR/signal-rservice.service';
 import { TokenService } from 'src/app/token/token.service';
 import { UserService } from 'src/app/userService/user.service';
+import Swal from 'sweetalert2';
 import { CommentsComponent } from '../../comments/comments.component';
 import { LikesComponent } from '../../likes/likes/likes.component';
 import { Post } from '../model/post';
@@ -41,9 +42,17 @@ export class PostComponent implements OnInit {
     this.postService.likeIt(this.post.postId,this.tokenService.vratiUsera()).subscribe(data=> {
       this.post.numberOfLikes=this.post.numberOfLikes+1;
       this.post.iLiked=true;
+      if(data.fromWhoUsername==this.tokenService.vratiUsera()) {
+        return;
+      }
       this.obavestiServera(data);
     }, error => {
       console.log("Greska!");
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Sorry. Try again later!'
+      });
       console.log(error.message);
     })
   }

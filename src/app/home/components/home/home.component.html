@@ -26,7 +26,26 @@
             <button class="btn" *ngIf="loadMore" (click)="loadMoreFunk()" style="background-color: blue; color:white; margin-left: 230px; margin-top: 5px;">Load more</button>
         </div>
     </div>
-    <div class="chat">
-
+    <div class="random">
+        <div class="sugestion">
+            <div id="oneUser" *ngFor="let one of randomUsers">
+                <div id="slikaProf">
+                    <img src={{one.profilePicture}} (click)="idiNaProfil(one.id)" style="width: 45px; height: 45px; border-radius: 100px;">
+                </div>
+                <div id="podaci" style="text-align: center;">
+                    <h1 style="margin-bottom: 2px; font-size:large;" (click)="idiNaProfil(one.id)">{{one.username}}</h1>
+                </div>
+                <div id="butons" style="margin-bottom: 10px;">
+                    <button class="btn" *ngIf="!one.followingMe && !one.requestSent" (click)="follow(one)" style="display: inline; background-color: blue; color: white;margin-right: 5px; width: 100%;">Follow</button>
+                    <button class="btn" *ngIf="one.followingMe && !one.requestSent" (click)="follow(one)" style="display: inline; background-color: rgb(255, 196, 0); color: white;margin-right: 5px; width: 100%;">Follow back</button>
+                    <button *ngIf="one.requestSent" class="btn" style="background-color: rgb(59, 182, 59); color: white; width: 100%;">Request sent</button>
+                </div>
+            </div>
+        </div>
+            <div id="reklame">
+                <img src="/assets/images/youtube.png" style="width: 150px; height: 150px;">
+                <h2><a href="https://www.youtube.com/" style="color: black; text-decoration: none;">YOUTUBE.COM</a></h2>
+                <p>Your favorite platform for listening music!</p>
+            </div>
     </div>
 </div>

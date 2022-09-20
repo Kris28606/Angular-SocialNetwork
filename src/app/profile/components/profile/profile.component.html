@@ -22,10 +22,13 @@
             <input *ngIf="izmena" type="file" class="form-control" accept="image/png, image/jpeg" id="formFile" (change)="select($event)">
         </div> 
         <div *ngIf="!mojProfil">
-            <button *ngIf="user.iFollow" (click)="unfollow()" class="btn" style="background-color: red; color: white; width: 70%;">Unfollow</button>
-            <button *ngIf="!user.iFollow && user.followingMe" (click)="follow()" class="btn" style="background-color: rgb(206, 206, 206); color: black; width: 70%;">Follow back</button>
+            <button *ngIf="user.iFollow && !user.requestSent" (click)="unfollow()" class="btn" style="background-color: red; color: white; width: 70%;">Unfollow</button>
+            <button *ngIf="!user.iFollow && user.followingMe && !user.requestSent" (click)="follow()" class="btn" style="background-color: rgb(255, 196, 0); color: white; width: 70%;">Follow back</button>
             <button *ngIf="!user.iFollow && !user.followingMe && !user.requestSent" (click)="follow()" class="btn" style="background-color: blue; color: white; width: 70%;">Follow</button>
-            <button *ngIf="!user.iFollow && !user.followingMe && user.requestSent" class="btn" style="background-color: rgb(59, 182, 59); color: white; width: 70%;">Request sent</button>
+            <button *ngIf="user.requestSent" class="btn" style="background-color: rgb(59, 182, 59); color: white; width: 70%;">Request sent</button>
+        </div>
+        <div *ngIf="!mojProfil" style="margin-top: 5px; margin-bottom: 15px;">
+            <button class="btn" style="background-color: green; color: white; width: 70%;" (click)="opetChat()">Message</button>
         </div>
     </div>
     <div>
@@ -36,11 +39,19 @@
             <div *ngIf="mojProfil">
                 <app-new-post [user]="user"></app-new-post>
             </div>
-           
             <app-post *ngFor="let post of posts" [post]="post"></app-post>
         </div>
     </div>
-    <div class="chat">
-
+    <div id="reklame">
+        <div id="reklama">
+            <img src="/assets/images/youtube.png" style="width: 150px; height: 150px;">
+            <h2><a href="https://www.youtube.com/" style="color: black; text-decoration: none;">YOUTUBE</a></h2>
+            <p>Your favorite platform for listening music!</p>
+        </div>
+        <div id="reklama">
+            <img src="/assets/images/netflix.jpg" style="width: 150px; height: 150px;">
+            <h2><a href="https://www.netflix.com/rs/" style="color: black; text-decoration: none;">NETFLIX</a></h2>
+            <p>Unlimited movies, TV shows, and more!</p>
+        </div>
     </div>
 </div>

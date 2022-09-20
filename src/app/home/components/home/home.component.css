@@ -54,3 +54,39 @@ h1:hover {
     font-size: large;
     color: white;
 }
+
+.sadrzaj {
+    background-color: rgba(240, 235, 255, 0.678);
+}
+
+
+#oneUser {
+    display: grid;
+    grid-template-columns: 15% 40% 45%;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.sugestion {
+    width: 300px;
+    background-color: white;
+    border: 1px gray solid;
+    margin-left: 90px;
+    margin-top: 20px;
+    border-radius: 30px;
+}
+
+#reklame {
+    width: 300px;
+    margin-left: 90px;
+    border: 0px gray solid;
+    border-radius: 30px;
+    padding: 10px;
+    margin-top: 50px;
+    text-align: center;
+    background-color: white;
+}
+
+#reklame img {
+    border: 1px black solid;
+}

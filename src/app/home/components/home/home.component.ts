@@ -4,7 +4,9 @@ import { UserDto } from 'src/app/model/user/userDto';
 import { PostService } from 'src/app/postService/post.service';
 import { TokenService } from 'src/app/token/token.service';
 import { UserService } from 'src/app/userService/user.service';
+import Swal from 'sweetalert2';
 import { Post } from '../post/model/post';
+import { NotificationService } from 'src/app/notifications/service/notification.service';
 
 @Component({
   selector: 'app-home',
@@ -22,8 +24,11 @@ export class HomeComponent implements OnInit {
   numOfPosts: number=2;
   loadMore: boolean=false;
   newPosts: Post[]=[];
+  randomUsers: UserDto[]=[];
+
   constructor(private route: ActivatedRoute, private userService: UserService,
-    private postService: PostService, private router: Router, private tokenService: TokenService) { }
+    private postService: PostService, private router: Router, private tokenService: TokenService,
+    private notificationService: NotificationService) { }
 
   ngOnInit(): void {
     this.user.username=this.tokenService.vratiUsera();
@@ -36,6 +41,11 @@ export class HomeComponent implements OnInit {
         if(this.posts.length==this.numOfPosts) {
           this.loadMore=true;
         }
+        this.userService.GetRandomUsers(this.user.id).subscribe(data=> {
+          this.randomUsers=data;
+        }, error=> {
+          console.log(error.message);
+        })
         console.log(this.posts);
       }, error => {
         console.log(error.message);
@@ -74,6 +84,12 @@ export class HomeComponent implements OnInit {
       this.userService.SearchUsers(this.kriterijum.trim(), this.user.id).subscribe(data=> {
        this.users=data;
       console.log("Rezultat: "+data);
+      }, error=> {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Sorry, we can’t find users!'
+        });
       });
   }
 
@@ -83,5 +99,17 @@ export class HomeComponent implements OnInit {
 
   logOut() {
     this.tokenService.logout();
+  }
+
+  follow(user: UserDto) {
+    this.notificationService.SendRequest(this.user.username, user.id).subscribe(data=> {
+      user.requestSent=true;
+    }, error => {
+      console.log(error.message);
+    })
+  }
+
+  idiNaProfil(id: number) {
+    this.router.navigate(['profile', id]);
   }
 }

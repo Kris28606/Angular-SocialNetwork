@@ -8,6 +8,7 @@ import { CommentNotification } from 'src/app/notifications/model/comment/comment
 import { PostService } from 'src/app/postService/post.service';
 import { SignalRserviceService } from 'src/app/signalR/signal-rservice.service';
 import { TokenService } from 'src/app/token/token.service';
+import Swal from 'sweetalert2';
 import { Post } from '../post/model/post';
 
 @Component({
@@ -31,6 +32,11 @@ export class CommentsComponent implements OnInit {
     this.postService.GetCommentsForPost(this.post.postId).subscribe(data=> {
       this.comments=data;
     }, error => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Sorry, we can’t load comments!'
+      });
       console.log(error.message);
     })
     this.signalR.startConnection();
@@ -52,8 +58,14 @@ export class CommentsComponent implements OnInit {
       com.date=this.commentNew.date;
       com.postId=this.post.postId;
       com.postPicture=this.post.picture;
+      
       this.obavestiServer(com);
     },error=> {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Sorry, we can’t save your comment!'
+      });
       console.log(error.message);
     });
   }

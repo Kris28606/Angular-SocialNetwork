@@ -15,33 +15,9 @@ export class LoginComponent implements OnInit{
 
   user: UserDto=new UserDto();
 
-  constructor(private loginService: LoginService, private tokenService: TokenService, private router: Router, 
-    private signalR: SignalRserviceService) { }
+  constructor(private loginService: LoginService, private tokenService: TokenService, private router: Router) { }
 
   ngOnInit(): void {
-    this.signalR.startConnection();
-    this.addListenerSuccess();
-    this.addListenerFail();
-  }
-
-  addListenerFail() {
-    this.signalR.hubConnection.on("logInFail", ()=> {
-      Swal.fire("Error, wrong username/password!");
-    });
-  }
-
-  addListenerSuccess() {
-    this.signalR.hubConnection.on("logInSuccessful", (data)=> {
-      this.user=data;
-      if(this.user.token!=null) {
-        this.tokenService.postaviToken(this.user.token);
-        this.tokenService.postaviUsera(this.user);
-      }
-      // console.log("Token"+this.tokenService.vratiToken());
-      // console.log("User"+this.tokenService.vratiUsera());
-      Swal.fire("Welcome, "+this.user.firstName+" "+this.user.lastName+"!");
-      this.router.navigate(['home', this.user.id]);
-    });
   }
 
   LogIn() {
@@ -60,7 +36,11 @@ export class LoginComponent implements OnInit{
       Swal.fire("Welcome, "+this.user.firstName+" "+this.user.lastName+"!");
       this.router.navigate(['home', this.user.id]);
     }, error => {
-      Swal.fire("Error, wrong username/password!");
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Sorry, we can’t log you in!'
+      });
       console.log(error);
     })
   }

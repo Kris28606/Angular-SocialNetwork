@@ -8,6 +8,7 @@ import { PictureService } from 'src/app/pictureService/picture.service';
 import { SignalRserviceService } from 'src/app/signalR/signal-rservice.service';
 import { TokenService } from 'src/app/token/token.service';
 import { UserService } from 'src/app/userService/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-profile',
@@ -47,6 +48,11 @@ export class ProfileComponent implements OnInit {
       this.userService.GetMyPosts(this.user.id, this.tokenService.vratiUsera()).subscribe(data=> {
       this.posts=data;
       }, error => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Sorry, we can’t load a profile!'
+        });
         console.log(error.message);
       })
     });
@@ -84,6 +90,12 @@ export class ProfileComponent implements OnInit {
               p.userId=this.user.id;
             }
           },error => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Sorry, we can’t update your profile!'
+            });
+            
             console.log(error.message);
           })
       },error => {
@@ -105,10 +117,20 @@ export class ProfileComponent implements OnInit {
     this.tokenService.logout();
   }
 
+  opetChat() {
+    localStorage.setItem('message', this.user.username);
+    this.router.navigate(['chat']);
+  }
+
   unfollow() {
    this.userService.Unfollow(this.username,this.user.id).subscribe(data=> {
     this.user.iFollow=false;
    }, error=> {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Sorry, we can’t unfollow this user!'
+    });
     console.log(error.message);
    });
   }
@@ -119,6 +141,11 @@ export class ProfileComponent implements OnInit {
       var follow=data;
       this.obavestiServer(follow);
     }, error=> {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Sorry, we can’t send your request!'
+      });
       console.log(error.message);
      });
   }

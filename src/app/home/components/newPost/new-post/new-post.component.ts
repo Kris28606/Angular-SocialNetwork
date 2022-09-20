@@ -36,6 +36,11 @@ export class NewPostComponent implements OnInit {
       Swal.fire("Successful created post!");
       },error=> {
         console.log(error.message);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Sorry, we can’t share your post!'
+        });
       });
     }, error => {
       console.log(error.message);

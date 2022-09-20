@@ -25,13 +25,18 @@ export class RegisterComponent implements OnInit {
         console.log("Unesite sve podatke!");
         Swal.fire('Please, fill all the fields!');
       } else{
-        this.user.profilePicture="https://localhost:7042/Resources\Images\avatar.png";
+        this.user.profilePicture="https://localhost:7042/Resources\\Images\\avatar.png";
         this.registerService.Register(this.user).subscribe(data=> {
           Swal.fire('You are successfuly registred!');
           this.router.navigate(['login']);
 
         }, error => {
           console.log("Greska!"+ error.message);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Sorry, we can’t create your account!'
+          });
         });
       }
   }
