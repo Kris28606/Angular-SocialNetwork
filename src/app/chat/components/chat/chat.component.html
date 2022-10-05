@@ -1,11 +1,11 @@
 <div class="header">
     <div id="naziv" style="display: inline;">
         <img src="/assets/images/logo2.png" style="width: 40px; height: 40px;">
-        <h1 (click)="goToHomePage()" style="display: inline; color: white; margin-right: 600px;">Reach me</h1>
+        <h1 (click)="goToHomePage()" style="display: inline; color: white; margin-right: 40%;">Reach me</h1>
     </div>
     <div id="pretragaDesno" style="display: inline; ">
         <h1 style="display: inline;"><a href="/notifications" style="text-decoration: none; color: white;"><i class="bi bi-bell"></i></a></h1>
-        <h1 style="display: inline;"><a href="/chat" style="margin-left: 20px;" ><i class="bi bi-chat-left-dots" style="color: white;"></i></a></h1>
+        <h1 style="display: inline;"><a href="/chat" style="margin-left: 3%;" ><i class="bi bi-chat-left-dots" style="color: white;"></i></a></h1>
         <button class="btn" (click)="logOut()">Log out <h1 style="display: inline;"><i class="bi bi-box-arrow-right"></i></h1> </button>
     </div>
 </div>
@@ -14,7 +14,7 @@
 
     <div id="users" style="border: 1px gray solid; border-radius: 30px; height: 540px;">
         <div id="naslov">
-        <input type="text" class="form-control" placeholder="Search inbox" (keyup)="onChange()" [(ngModel)]="kriterijum" name="search" style="width: 330px; display: inline-block;">
+        <input type="text" class="form-control" placeholder="Search inbox" (keyup)="onChange()" [(ngModel)]="kriterijum" name="search" style="width: 80%; display: inline-block;">
         <h1 style="display: inline;"><a href="" ><i class="bi bi-search" style="color: black;"></i></a></h1>
         </div>
         <div id="lista">
@@ -66,7 +66,7 @@
             </div>
             <div style="margin-bottom: 10px;">
                 <input [(ngModel)]="textZaSlanje" type="text" class="form-control" name="novaPoruka" style="width: 80%; margin-left:7px; display: inline;">
-                <button (click)="posaljiPoruku()" style=" margin-left:7px; background-color: blue; color: white; width:100px; display: inline;" class="btn"><i class="bi bi-send"></i></button>
+                <button (click)="posaljiPoruku()" style=" margin-left:7px; background-color: blue; color: white; width:70px; display: inline;" class="btn"><i class="bi bi-send"></i></button>
             </div>
         </div>
         

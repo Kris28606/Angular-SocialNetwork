@@ -75,16 +75,19 @@ export class ChatComponent implements OnInit {
   }
 
   onChange() {
-    // if(this.kriterijum!="") {
-    //   console.log(this.kriterijum);
-    //   this.inboxUsers=this.searchUsers;
-    // } else {
-    //   this.messageService.getInboxUsers(this.trenutniUser.id).subscribe(data=> {
-    //     this.inboxUsers=data;
-    //   }, error => {
-    //     console.log(error.message);
-    //   })
-    // }
+    if(this.kriterijum!="") {
+      this.messageService.FindInboxUsers(this.trenutniUser.id, this.kriterijum).subscribe(data=> {
+        this.inboxUsers=data;
+      }, error => {
+        console.log(error.message);
+      })
+    } else {
+      this.messageService.getInboxUsers(this.trenutniUser.id).subscribe(data=> {
+        this.inboxUsers=data;
+      }, error=> {
+        console.log(error.message);
+      })
+    }
   }
 
   prikaziPoruke(usr: UserDto, event: any) {

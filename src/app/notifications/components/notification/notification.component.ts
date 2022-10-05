@@ -150,7 +150,15 @@ export class NotificationComponent implements OnInit {
   }
 
   deleteRequest(follow: FollowNotification) {
-    this.notificationService.DeleteRequest(follow);
+    this.notificationService.DeleteRequest(follow.fromWhoId, this.user.id).subscribe(data=> {
+      var obavestenja=[];
+      for(let fol of this.followNotifications) {
+        if(fol!=follow) {
+          obavestenja.push(fol);
+        }
+      }
+      this.followNotifications=obavestenja;
+    })
   }
 
 }

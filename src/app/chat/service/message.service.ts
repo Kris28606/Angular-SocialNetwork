@@ -29,4 +29,10 @@ export class MessageService {
     return this.httpClient.post<Message>(`${this.baseUrl}/send`, mess,
     {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
   }
+
+  FindInboxUsers(id: number, kriterijum: String):Observable<UserDto[]> {
+    return this.httpClient.post<UserDto[]>(`${this.baseUrl}/inbox/find/${id}`, kriterijum,
+    {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
+  }
+
 }

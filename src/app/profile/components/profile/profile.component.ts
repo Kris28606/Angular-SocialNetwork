@@ -73,6 +73,7 @@ export class ProfileComponent implements OnInit {
   }
 
   changePicture(evt: any) {
+    
     if(!this.izmena) {
       this.izmena=!this.izmena;
     }else {

@@ -76,13 +76,14 @@ export class HomeComponent implements OnInit {
   }
 
   onChange(event : any){
+    
     if(this.kriterijum=="") {
       this.pretraga=false;
       return;
     };
       this.pretraga=true;
       this.userService.SearchUsers(this.kriterijum.trim(), this.user.id).subscribe(data=> {
-       this.users=data;
+      this.users=data;
       console.log("Rezultat: "+data);
       }, error=> {
         Swal.fire({

@@ -20,5 +20,5 @@ export class SignalRserviceService {
     this.hubConnection.start().then( ()=> {
       console.log("Hub started");
     }).catch(error=> console.log("---- Error: "+error.message));
-}
+  }
 }

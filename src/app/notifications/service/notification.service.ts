@@ -35,8 +35,8 @@ export class NotificationService {
     {headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
   }
 
-  DeleteRequest(follow: FollowNotification):Observable<Object> {
-    return this.httpClient.delete(`${this.baseURL}/delete`, {body: follow,
+  DeleteRequest(fromWho: number, forWho: number):Observable<Object> {
+    return this.httpClient.delete(`${this.baseURL}/delete/${fromWho}/${forWho}`, {
     headers: new HttpHeaders().set('Authorization', this.tokenService.vratiToken())});
   }
 

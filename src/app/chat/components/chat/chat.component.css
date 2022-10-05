@@ -1,6 +1,7 @@
 .header {
     padding: 10px;
     background-color: blue;
+    width:100%;
 }
 
 h1 {
@@ -14,11 +15,11 @@ h1:hover {
 
 
 #pretragaDesno{
-    margin-left: 150px;
+    margin-left: 20%px;
 }
 
 #pretragaDesno button {
-    margin-left: 50px;
+    margin-left: 5%;
     font-size: large;
     color: white;
 }
@@ -27,17 +28,18 @@ h1:hover {
     margin-left: 20px;
     margin-top: 5px;
     display: grid;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 30% 30%;
 }
 
 .chat #naslov{
     margin-top: 20px;
-    width: 615px;
+    width: 465px;
     margin-left: 20px;
 }
 
 .chat #poruke {
     margin-left: 20px;
+    width: 60%;
 }
 
 #naslov, #lista{
@@ -46,14 +48,14 @@ h1:hover {
 }
 
 #from {
-    width: 600px;
+    width: 450px;
     display: grid;
     max-height: 80%;
     padding-left: 5px; 
 }
 
 #for {
-    width: 600px;
+    width: 450px;
     display: grid;
     
     max-height: 80%;
@@ -104,7 +106,7 @@ p{
 
 .poruke {
     background-color: rgb(242, 249, 255);
-    width: 615px;
+    width: 465px;
     max-height: 480px;
     border: 1px rgb(148, 148, 148) solid;
 }
